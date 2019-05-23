@@ -1,5 +1,5 @@
 #include "MundoJuego.h"
-#include "glut.h"
+#include <GLUT/glut.h>
 
 Mundo mundo;
 
