@@ -56,11 +56,19 @@ Vector3D Vector3D::operator + (Vector3D &v)
 
  Vector3D Vector3D::operator *(float e)
  {
-	 Vector3D res;
+	Vector3D res;
 	res.x=x*e;
 	res.y=y*e;
 	res.z=z*e;
 	return res;
+ }
+
+ Vector3D Vector3D::operator +=(Vector3D& v)
+ {
+	 this->x += v.x;
+	 this->y += v.y;
+	 this->z += v.z;
+	 return *this;
  }
 
  bool Vector3D::operator == (Vector3D v)

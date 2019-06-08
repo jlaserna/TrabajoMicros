@@ -9,7 +9,7 @@ Interaccion::Interaccion(void)
 
 void Interaccion::rebote(Personaje &h, Bloque c)
 {
-	float xmax=c.suelo.esquina2.x-3.33f;
+	/*float xmax=c.suelo.esquina2.x-3.33f;
 	float xmin=c.suelo.esquina1.x+3.33f;
 	float ymax=c.techo.esquina2.y-1;
 	float ymin=c.suelo.esquina1.y+1;
@@ -19,7 +19,7 @@ void Interaccion::rebote(Personaje &h, Bloque c)
 	if(h.posicion.x<xmin)h.posicion.x=xmin;
 	if(h.posicion.y>ymax)h.posicion.y=ymax;
 	if(h.posicion.y<ymin)h.posicion.y=ymin;
-	
+	*/
 }
 
 /*bool Interaccion::rebote(Esfera &e, Pared p)

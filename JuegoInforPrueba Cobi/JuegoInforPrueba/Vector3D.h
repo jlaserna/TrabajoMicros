@@ -15,6 +15,7 @@ public: //metodos
 	Vector3D operator - (Vector3D &); // (5) resta de vectores
 	Vector3D operator + (Vector3D &); // (6) suma de vectores
 	float operator *(Vector3D &);   // (7) producto escalar
-	Vector3D operator *(float);  // (8) producto por un escalar 
+	Vector3D operator *(float);  // (8) producto por un escalar
+	Vector3D operator +=(Vector3D &);
 	bool operator == (Vector3D);
 };

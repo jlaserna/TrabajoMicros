@@ -29,7 +29,7 @@ void Mundo::Dibuja()
 
 	
 	bloque.Dibuja();
-	personaje.Dibuja();
+	personaje.dibuja();
 
 	/*esfera.Dibuja();
 	hombre.Dibuja();
@@ -58,7 +58,7 @@ void Mundo::Mueve()
 	bonus.Mueve(0.025f);
 	disparo.Mueve(0.025f);*/
 	bloque.Mueve(0.025f);
-	personaje.Mueve(0.075f);
+	personaje.mueve(0.075f);
 	/////////-***-***************************************************
 	Interaccion::rebote(personaje,bloque);
 	/*Interaccion::rebote(esfera,caja);
@@ -74,8 +74,8 @@ void Mundo::Inicializa()
 	x_ojo=0;
 	y_ojo=7.5;
 	z_ojo=30;
-	personaje.SetVel(0.0f,0.0f,0.0f);
-	personaje.SetPos(0,2,7);
+	//personaje.SetVel(0.0f,0.0f,0.0f);
+	//personaje.SetPos(0,2,7);
 
 	/*esfera.posicion.x=2;
 	esfera.posicion.y=4;
@@ -121,7 +121,7 @@ void Mundo::tecla(unsigned char key)
 
 void Mundo::Tecla(bool keystates[])
 {
-	if (keystates['a'])
+	/*if (keystates['a'])
 	{
 		personaje.SetVel(-5.0f, personaje.jump(), 0.0f);
 	}
@@ -137,7 +137,7 @@ void Mundo::Tecla(bool keystates[])
 			personaje.SetVel(personaje.giro(), 15.0f, 0.0f);
 	}
 	else
-		personaje.SetVel(0.0f, personaje.jump(), 0.0f);
+		personaje.SetVel(0.0f, personaje.jump(), 0.0f);*/
 }
 
 void Mundo::teclaEspecial(unsigned char key)
@@ -146,19 +146,19 @@ void Mundo::teclaEspecial(unsigned char key)
 	Vector3D carril2=(0.0f,2.0f,0.0f);
 	Vector3D carril3=(6.67f,2.0f,0.0f);
 	Vector3D pos_pers;
-	pos_pers=personaje.GetPos();
+	//pos_pers=personaje.GetPos();
 
 	switch(key)
 	{
 	case (GLUT_KEY_LEFT):
 	
-		personaje.SetVel(-5.0f, personaje.jump(), 0.0f);
+		//personaje.SetVel(-5.0f, personaje.jump(), 0.0f);
 		
 		break;
 	
 	case (GLUT_KEY_RIGHT):
 		
-		personaje.SetVel(5.0f, personaje.jump(), 0.0f);
+		//personaje.SetVel(5.0f, personaje.jump(), 0.0f);
 		
 		break;
 
@@ -167,7 +167,7 @@ void Mundo::teclaEspecial(unsigned char key)
 		int salto;
 		salto = personaje.saltos();
 		if (salto == 0)
-			personaje.SetVel(personaje.giro(), 10.0f, 0.0f);
+			//personaje.SetVel(personaje.giro(), 10.0f, 0.0f);
 		break;
 	case GLUT_KEY_DOWN:
 		break;
