@@ -1,20 +1,28 @@
 #include "Objeto.h"
 
+#define GLOBAL_ACCEL -9.81f
+
 #pragma once
 class Personaje : public Objeto
 {
 	float altura;
+	bool subiendo = false;
+	bool bajando = false;
 
 public:
-	Personaje(void);
+	Personaje();
 	
-	int saltos();	//compruebo si está en el suelo, en dicho caso me deja saltar, sinó no me permite realizar un soble salto
-	int giro();		//con este parametro se obtiene si va hacia la derecha o a la izquierda
-	int jump();		//comprobamos si está saltando
+	void salta();
+	void derecha();
+	void izquierda();
+
+	bool estaEnElSuelo() { return this->getPos().y <= 1.0f; };
 
 	void dibuja();
 
+	void mueve(float t);
+
 	friend class Interaccion;
 
-	virtual ~Personaje(void);
+	virtual ~Personaje();
 };

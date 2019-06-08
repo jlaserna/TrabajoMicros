@@ -60,7 +60,7 @@ void Mundo::Mueve()
 	bloque.Mueve(0.025f);
 	personaje.mueve(0.075f);
 	/////////-***-***************************************************
-	Interaccion::rebote(personaje,bloque);
+	Interaccion::colision(personaje,bloque);
 	/*Interaccion::rebote(esfera,caja);
 	Interaccion::rebote(esfera,plataforma);
 	Interaccion::rebote(esfera2,caja);
@@ -121,23 +121,19 @@ void Mundo::tecla(unsigned char key)
 
 void Mundo::Tecla(bool keystates[])
 {
-	/*if (keystates['a'])
+	if (keystates['a'])
 	{
-		personaje.SetVel(-5.0f, personaje.jump(), 0.0f);
+		personaje.izquierda();
 	}
 	else if (keystates['d'])
 	{
-		personaje.SetVel(5.0f, personaje.jump(), 0.0f);
+		personaje.derecha();
 	}
 	else if (keystates['w'])
 	{
-		int salto;
-		salto = personaje.saltos();
-		if (salto == 0)
-			personaje.SetVel(personaje.giro(), 15.0f, 0.0f);
+		personaje.salta();
 	}
-	else
-		personaje.SetVel(0.0f, personaje.jump(), 0.0f);*/
+
 }
 
 void Mundo::teclaEspecial(unsigned char key)
@@ -164,11 +160,11 @@ void Mundo::teclaEspecial(unsigned char key)
 
 	case GLUT_KEY_UP:
 		
-		int salto;
+		/*int salto;
 		salto = personaje.saltos();
 		if (salto == 0)
 			//personaje.SetVel(personaje.giro(), 10.0f, 0.0f);
-		break;
+		break;*/
 	case GLUT_KEY_DOWN:
 		break;
 	}

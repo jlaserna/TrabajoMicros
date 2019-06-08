@@ -7,19 +7,33 @@ Interaccion::Interaccion(void)
 {
 }
 
-void Interaccion::rebote(Personaje &h, Bloque c)
+void Interaccion::colision(Personaje &h, Bloque c)
 {
-	/*float xmax=c.suelo.esquina2.x-3.33f;
+	float xmax=c.suelo.esquina2.x-3.33f;
 	float xmin=c.suelo.esquina1.x+3.33f;
-	float ymax=c.techo.esquina2.y-1;
-	float ymin=c.suelo.esquina1.y+1;
+	float ymax=c.techo.esquina2.y-1.0f;
+	float ymin=c.suelo.esquina1.y+1.0f;
 	//float zmax=c.techo.esquina2.y;
 	//float zmin=c.suelo.esquina1.y;
-	if(h.posicion.x>xmax)h.posicion.x=xmax;
-	if(h.posicion.x<xmin)h.posicion.x=xmin;
-	if(h.posicion.y>ymax)h.posicion.y=ymax;
-	if(h.posicion.y<ymin)h.posicion.y=ymin;
-	*/
+	if (h.getPos().x > xmax) {
+		h.setPos(xmax, h.getPos().y, h.getPos().z);
+		h.setVel(0.0f, h.getVel().y, h.getVel().z);
+	}
+	if (h.getPos().x < xmin) {
+		h.setPos(xmin, h.getPos().y, h.getPos().z);
+		h.setVel(0.0f, h.getVel().y, h.getVel().z);
+	}
+	if (h.getPos().y > ymax) {
+		h.setPos(h.getPos().x, ymax, h.getPos().z);
+		h.setVel(h.getVel().x, 0.0f, h.getVel().z);
+		h.subiendo = false;
+		h.bajando = true;
+	}
+	if (h.getPos().y < ymin && !h.subiendo) {
+		h.setPos(h.getPos().x, ymin, h.getPos().z);
+		h.setVel(h.getVel().x, 0.0f, h.getVel().z);
+	}
+	
 }
 
 /*bool Interaccion::rebote(Esfera &e, Pared p)
