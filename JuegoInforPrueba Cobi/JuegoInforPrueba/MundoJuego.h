@@ -1,29 +1,25 @@
-#include "Bloque.h"
+#include "Escenario.h"
 #include "Personaje.h"
-//#include "Esfera.h"
-//#include "Bonus.h"
-//#include "Disparo.h"
+#include "ListaBloques.h"
+#include "Bloque.h"
+#include "Bonus.h"
+#include "Obstaculo.h"
+
 
 class Mundo
 {
 public: 
-	/*Disparo disparo;
-	Esfera esfera;
-	Caja caja;
-	Bonus bonus;*/
-	//Pared plataforma;
-	Bloque bloque;
+
+	Escenario escenario;
 	Personaje personaje;
+	ListaBloques listaBloques;
 
-
-	void Tecla(bool keystates[]);
-	void tecla(unsigned char key);
+	void tecla(bool keystates[]);
 	void Inicializa();
 	void RotarOjo();
 	void Mueve();
 	void Dibuja();
 	void teclaEspecial(unsigned char key);
-	void MovPers();
 
 	float x_ojo;
 	float y_ojo;

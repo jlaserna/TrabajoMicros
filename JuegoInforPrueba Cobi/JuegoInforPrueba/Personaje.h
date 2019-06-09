@@ -5,9 +5,12 @@
 #pragma once
 class Personaje : public Objeto
 {
+private:
 	float altura;
 	bool subiendo = false;
 	bool bajando = false;
+	bool moviendoDerecha = false;
+	bool moviendoIzquierda = false;
 
 public:
 	Personaje();

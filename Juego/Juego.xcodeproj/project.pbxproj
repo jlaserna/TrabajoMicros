@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B2B49EE229C3B41006FEB17 /* objloaderelephant.c in Sources */ = {isa = PBXBuildFile; fileRef = 3B2B49ED229C3B41006FEB17 /* objloaderelephant.c */; };
 		3B5091DB2296D587005CCFEC /* Principal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B5091DA2296D587005CCFEC /* Principal.cpp */; };
 		3B5091EE2296D5AD005CCFEC /* Pared.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B5091E22296D5AC005CCFEC /* Pared.cpp */; };
 		3B5091F02296D5AD005CCFEC /* Bloque.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B5091E42296D5AD005CCFEC /* Bloque.cpp */; };
@@ -33,6 +34,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3B2B49ED229C3B41006FEB17 /* objloaderelephant.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = objloaderelephant.c; path = ../../../opengl_objloader/objloaderelephant.c; sourceTree = "<group>"; };
 		3B5091D72296D587005CCFEC /* Juego */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Juego; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B5091DA2296D587005CCFEC /* Principal.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Principal.cpp; sourceTree = "<group>"; };
 		3B5091E12296D5AC005CCFEC /* Personaje.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Personaje.h; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 		3B5091D92296D587005CCFEC /* Juego */ = {
 			isa = PBXGroup;
 			children = (
+				3B2B49ED229C3B41006FEB17 /* objloaderelephant.c */,
 				3B5091E42296D5AD005CCFEC /* Bloque.cpp */,
 				3B5091E82296D5AD005CCFEC /* Bloque.h */,
 				3B5091EB2296D5AD005CCFEC /* Interaccion.cpp */,
@@ -177,6 +180,7 @@
 				3B5091F32296D5AD005CCFEC /* MundoJuego.cpp in Sources */,
 				3B5091F12296D5AD005CCFEC /* Personaje.cpp in Sources */,
 				3B5091EE2296D5AD005CCFEC /* Pared.cpp in Sources */,
+				3B2B49EE229C3B41006FEB17 /* objloaderelephant.c in Sources */,
 				3B5091F22296D5AD005CCFEC /* Interaccion.cpp in Sources */,
 				3B5091DB2296D587005CCFEC /* Principal.cpp in Sources */,
 				3B5091F02296D5AD005CCFEC /* Bloque.cpp in Sources */,

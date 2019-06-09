@@ -78,9 +78,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Bloque.cpp" />
+    <ClCompile Include="Bonus.cpp" />
+    <ClCompile Include="Celda.cpp" />
+    <ClCompile Include="Escenario.cpp" />
     <ClCompile Include="Interaccion.cpp" />
+    <ClCompile Include="ListaBloques.cpp" />
     <ClCompile Include="MundoJuego.cpp" />
     <ClCompile Include="Objeto.cpp" />
+    <ClCompile Include="Obstaculo.cpp" />
     <ClCompile Include="Pared.cpp" />
     <ClCompile Include="Personaje.cpp" />
     <ClCompile Include="Principal.cpp" />
@@ -88,9 +93,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bloque.h" />
+    <ClInclude Include="Bonus.h" />
+    <ClInclude Include="Celda.h" />
+    <ClInclude Include="Escenario.h" />
     <ClInclude Include="Interaccion.h" />
+    <ClInclude Include="ListaBloques.h" />
     <ClInclude Include="MundoJuego.h" />
     <ClInclude Include="Objeto.h" />
+    <ClInclude Include="Obstaculo.h" />
     <ClInclude Include="Pared.h" />
     <ClInclude Include="Personaje.h" />
     <ClInclude Include="Vector3D.h" />
