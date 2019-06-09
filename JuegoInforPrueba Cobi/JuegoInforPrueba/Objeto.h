@@ -8,7 +8,7 @@ private:
 	Vector3D velocidad;
 	Vector3D aceleracion;
 
-	float radio = 1.0f;
+	float radio;
 
 public:
 	void setVel(Vector3D velocidad) { this->velocidad = velocidad; };
@@ -28,9 +28,9 @@ public:
 
 	struct color
 	{
-		int r = 0;
-		int g = 0;
-		int b = 0;
+		int r;
+		int g;
+		int b;
 	} miColor;
 
 	Objeto();

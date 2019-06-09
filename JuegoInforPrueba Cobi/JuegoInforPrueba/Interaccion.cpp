@@ -7,7 +7,7 @@ Interaccion::Interaccion(void)
 {
 }
 
-void Interaccion::colision(Personaje &h, Escenario c)
+/*void Interaccion::colision(Personaje &h, Escenario c)
 {
 	float xmax=c.suelo.esquina2.x-3.33f;
 	float xmin=c.suelo.esquina1.x+3.33f;
@@ -40,7 +40,7 @@ void Interaccion::colision(Personaje &h, Escenario c)
 		h.moviendoIzquierda = false;
 	}
 	
-}
+}*/
 
 bool Interaccion::colision(Personaje &p, Celda c)
 {

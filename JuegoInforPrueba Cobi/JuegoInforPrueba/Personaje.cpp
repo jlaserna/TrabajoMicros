@@ -4,6 +4,11 @@
 
 Personaje::Personaje(void)
 {
+	subiendo = false;
+	bajando = false;
+	moviendoDerecha = false;
+	moviendoIzquierda = false;
+
 	altura=1.0f;
 	this->setPos(Vector3D(0, 2.0f, 7.0f));
 	this->setVel(Vector3D(0, 0, 0));

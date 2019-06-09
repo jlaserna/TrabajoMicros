@@ -1,6 +1,7 @@
-#include "Escenario.h"
+
 #include "Personaje.h"
 #include "ListaBloques.h"
+#include "ListaEscenario.h"
 #include "Bloque.h"
 #include "Bonus.h"
 #include "Obstaculo.h"
@@ -10,7 +11,7 @@ class Mundo
 {
 public: 
 
-	Escenario escenario;
+	ListaEscenario listaEscenario;
 	Personaje personaje;
 	ListaBloques listaBloques;
 

@@ -4,6 +4,11 @@
 
 Objeto::Objeto()
 {
+	miColor.r=0;
+	miColor.g=0;
+	miColor.b=0;
+
+	radio = 1.0f;
 	this->posicion = Vector3D(0, 0, 0);
 	this->velocidad = Vector3D(0, 0, 0);
 	this->aceleracion = Vector3D(0, 0, 0);

@@ -20,7 +20,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v110</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -83,6 +83,7 @@
     <ClCompile Include="Escenario.cpp" />
     <ClCompile Include="Interaccion.cpp" />
     <ClCompile Include="ListaBloques.cpp" />
+    <ClCompile Include="ListaEscenario.cpp" />
     <ClCompile Include="MundoJuego.cpp" />
     <ClCompile Include="Objeto.cpp" />
     <ClCompile Include="Obstaculo.cpp" />
@@ -99,6 +100,7 @@
     <ClInclude Include="Escenario.h" />
     <ClInclude Include="Interaccion.h" />
     <ClInclude Include="ListaBloques.h" />
+    <ClInclude Include="ListaEscenario.h" />
     <ClInclude Include="MundoJuego.h" />
     <ClInclude Include="Objeto.h" />
     <ClInclude Include="Obstaculo.h" />

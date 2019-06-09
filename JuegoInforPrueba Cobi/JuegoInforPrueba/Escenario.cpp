@@ -1,128 +1,164 @@
 #include "Escenario.h"
+#include "Pared.h"
 #include "glut.h"
 
 Escenario::Escenario(void)
 {
-	aceleracion.z=0.0f;
-	velocidad.z=30.0f;
+	//this->setPos(Vector3D(0, 0, 0));
+	this->setVel(Vector3D(0, 0, 30.0f));
+	this->setAccel(Vector3D(0, 0, 0));
+	
+	paredes[0] = new Pared();//suelo
+	paredes[0]->setPos(this->getPos() + Vector3D(0, 0, 0));
+	paredes[0]->setLim(Vector3D(-10.0f, 0, 165.0f),Vector3D(10.0f, 0, -105.0f));
+	paredes[0]->setColor(255,0,0);
 
-	suelo.SetColor(141,73,37);
-	techo.SetColor(135,207,235);
-	pared_dcha.SetColor(20,200,20);
-	pared_izq.SetColor(20,200,20);
+	paredes[1] = new Pared();//techo
+	paredes[1]->setPos(this->getPos() + Vector3D(0, 15.0f, 0));
+	paredes[1]->setColor(255,0,0);
+	paredes[1]->setLim(Vector3D(-10.0f, 0, 165.0f),Vector3D(10.0f, 0, -105.0f));
 
-	/*suelo.limite1.x=-10.0f;
-	suelo.limite1.y=0.0f;
-	suelo.limite2.x=10.0f;
-	suelo.limite2.y=0.0f;
-	suelo.limite3.z=10.0f;
-	suelo.limite4.z=-1000.0f;
+	paredes[2] = new Pared();//pared derecha
+	paredes[2]->setPos(this->getPos() + Vector3D(-10.0, 7.5, 0));
+	paredes[2]->setColor(255,0,0);
+	paredes[2]->setLim(Vector3D(0, -7.5f, 165.0f),Vector3D(0, 7.5f, -105.0f));
 
-	techo.limite1.x=-10.0f;
-	techo.limite1.y=15.0f;
-	techo.limite2.x=10.0f;
-	techo.limite2.y=15.0f;
-	techo.limite3.z=10.0f;
-	techo.limite4.z=-1000.0f;
+	paredes[3] = new Pared();//pared izquierda
+	paredes[3]->setPos(this->getPos() + Vector3D(10.0, 7.5, 0));
+	paredes[3]->setColor(255,0,0);
+	paredes[3]->setLim(Vector3D(0, -7.5f, 165.0f),Vector3D(0, 7.5f, -105.0f));
 
-	pared_dcha.limite1.x=10.0f;
-	pared_dcha.limite1.y=0.0f;
-	pared_dcha.limite2.x=10.0f;
-	pared_dcha.limite2.y=15.0f;
-	pared_dcha.limite3.z=10.0f;
-	pared_dcha.limite4.z=-1000.0f;
+	//Primer Escenario
+	//paredes[0]=new Pared();
+	/*paredes[0].setColor(255,0,0);
+	paredes[0].setPos(Vector3D(0, 0, -155.0f));
+	paredes[0].setLim(Vector3D(-10.0f, 0, 165.0f),Vector3D(10.0f, 0, -105.0f));
 
-	pared_izq.limite1.x=-10.0f;
-	pared_izq.limite1.y=0.0f;
-	pared_izq.limite2.x=-10.0f;
-	pared_izq.limite2.y=15.0f;
-	pared_izq.limite3.z=10.0f;
-	pared_izq.limite4.z=-1000.0f;*/
+	//paredes[1]=new Pared();
+	paredes[1].setColor(255,0,0);
+	paredes[1].setPos(Vector3D(0, 15.0f, -155.0f));
+	paredes[1].setLim(Vector3D(-10.0f, 0, 165.0f),Vector3D(10.0f, 0, -105.0f));
 
-	suelo.esquina1.x= -10.0f;
-	suelo.esquina1.y= 0.0f;
-	suelo.esquina1.z= 10.0f;
-	suelo.esquina2.x= 10.0f;
-	suelo.esquina2.y= 0.0f;
-	suelo.esquina2.z= 10.0f;
-	suelo.esquina3.x= 10.0f;
-	suelo.esquina3.y= 0.0f;
-	suelo.esquina3.z= -300.0f;
-	suelo.esquina4.x= -10.0f;
-	suelo.esquina4.y= 0.0f;
-	suelo.esquina4.z= -300.0f;
+	//paredes[2]=new Pared();
+	paredes[2].setColor(255,0,0);
+	paredes[2].setPos(Vector3D(10.0f, 7.5f, -155.0f));
+	paredes[2].setLim(Vector3D(0, -7.5f, 165.0f),Vector3D(0, 7.5f, -105.0f));
 
+	//paredes[3]=new Pared();
+	paredes[3].setColor(255,0,0);
+	paredes[3].setPos(Vector3D(-10.0f, 7.5f, -155.0f));
+	paredes[3].setLim(Vector3D(0, -7.5f, 165.0f),Vector3D(0, 7.5f, -105.0f));
+	//---------------------
+	//Segundo Escenario
+	paredes[4].setColor(0,255,0);
+	paredes[4].setPos(Vector3D(10.0f, 0, -425.0f));
+	paredes[4].setLim(Vector3D(-10.0f, 0, 165.0f),Vector3D(10.0f, 0, -105.0f));
 
-	techo.esquina1.x= -10.0f;
-	techo.esquina1.y= 15.0f;
-	techo.esquina1.z= 10.0f;
-	techo.esquina2.x= 10.0f;
-	techo.esquina2.y= 15.0f;
-	techo.esquina2.z= 10.0f;
-	techo.esquina3.x= 10.0f;
-	techo.esquina3.y= 15.0f;
-	techo.esquina3.z= -300.0f;
-	techo.esquina4.x= -10.0f;
-	techo.esquina4.y= 15.0f;
-	techo.esquina4.z= -300.0f;
-
-	pared_dcha.esquina1.x= 10.0f;
-	pared_dcha.esquina1.y= 0.0f;
-	pared_dcha.esquina1.z= 10.0f;
-	pared_dcha.esquina2.x= 10.0f;
-	pared_dcha.esquina2.y= 15.0f;
-	pared_dcha.esquina2.z= 10.0f;
-	pared_dcha.esquina3.x= 10.0f;
-	pared_dcha.esquina3.y= 15.0f;
-	pared_dcha.esquina3.z= -300.0f;
-	pared_dcha.esquina4.x= 10.0f;
-	pared_dcha.esquina4.y= 0.0f;
-	pared_dcha.esquina4.z= -300.0f;
-
-	pared_izq.esquina1.x= -10.0f;
-	pared_izq.esquina1.y= 0.0f;
-	pared_izq.esquina1.z= 10.0f;
-	pared_izq.esquina2.x= -10.0f;
-	pared_izq.esquina2.y= 15.0f;
-	pared_izq.esquina2.z= 10.0f;
-	pared_izq.esquina3.x= -10.0f;
-	pared_izq.esquina3.y= 15.0f;
-	pared_izq.esquina3.z= -300.0f;
-	pared_izq.esquina4.x= -10.0f;
-	pared_izq.esquina4.y= 0.0f;
-	pared_izq.esquina4.z= -300.0f;
+	paredes[5].setColor(0,255,0);
+	paredes[5].setPos(Vector3D(10.0f, 15.0f, -425.0f));
+	paredes[5].setLim(Vector3D(-10.0f, 0, 165.0f),Vector3D(10.0f, 0, -105.0f));
 
 
+	paredes[6].setColor(0,255,0);
+	paredes[6].setPos(Vector3D(20.0f, 7.5f, -425.0f));
+	paredes[6].setLim(Vector3D(0, -7.5f, 165.0f),Vector3D(0, 7.5f, -105.0f));
+
+	paredes[7].setColor(0,255,0);
+	paredes[7].setPos(Vector3D(0, 7.5f, -425.0f));
+	paredes[7].setLim(Vector3D(0, -7.5f, 165.0f),Vector3D(0, 7.5f, -105.0f));
+	//----------------------
+	//Tercer Escenario
+	paredes[8].setColor(0,0,255);
+	paredes[8].setPos(Vector3D(10.0f, 0, -695.0f));
+	paredes[8].setLim(Vector3D(-10.0f, 0, 165.0f),Vector3D(10.0f, 0, -105.0f));
+
+	paredes[9].setColor(0,0,255);
+	paredes[9].setPos(Vector3D(10.0f, 15.0f, -695.0f));
+	paredes[9].setLim(Vector3D(-10.0f, 0, 165.0f),Vector3D(10.0f, 0, -105.0f));
 
 
-	/*pared_dcha.verde=255;
-	pared_izq.verde=255;
+	paredes[10].setColor(0,0,255);
+	paredes[10].setPos(Vector3D(20.0f, 7.5f, -695.0f));
+	paredes[10].setLim(Vector3D(0, -7.5f, 165.0f),Vector3D(0, 7.5f, -105.0f));
 
-		suelo.verde=150;
-	suelo.rojo=0;
-	suelo.azul=0;
-	techo.rojo=0;
-	techo.verde=150;
-	techo.azul=0;
-	pared_dcha.rojo=0;
-	pared_dcha.verde=50;
-	pared_dcha.azul=0;
-	pared_izq.rojo=0;
-	pared_izq.verde=50;
-	pared_izq.azul=0;*/
+	paredes[11].setColor(0,0,255);
+	paredes[11].setPos(Vector3D(0, 7.5f, -695.0f));
+	paredes[11].setLim(Vector3D(0, -7.5f, 165.0f),Vector3D(0, 7.5f, -105.0f));*/
+	
 
+
+	//COLORES PAREDES ORIGINALES
+	/*suelo.setColor(141,73,37);
+	techo.setColor(135,207,235);
+	pared_dcha.setColor(20,200,20);
+	pared_izq.setColor(20,200,20);*/
+
+	//suelo.setPos(Vector3D(10.0f, 0, -155.0f));
+	//techo.setPos(Vector3D(10.0f, 15.0f, -155.0f));
+	//pared_dcha.setPos(Vector3D(20.0f, 7.5f, -155.0f));
+	//pared_izq.setPos(Vector3D(0, 7.5f, -155.0f));
+
+	/*suelo.setLim(Vector3D(-10.0f, 0, 170.0f),Vector3D(10.0f, 0, -155.0f));
+	techo.setLim(Vector3D(-10.0f, 0, 170.0f),Vector3D(10.0f, 0, -155.0f));
+	pared_dcha.setLim(Vector3D(0, -7.5f, 170.0f),Vector3D(0, 7.5f, -155.0f));
+	pared_izq.setLim(Vector3D(0, -7.5f, 170.0f),Vector3D(0, 7.5f, -155.0f));*/
+
+}
+
+Escenario::Escenario(Escenario e, Vector3D v)
+{
+	this->setPos(e.getPos() + v);
+	this->setVel(Vector3D(0, 0, 30.0f));
+	this->setAccel(Vector3D(0, 0, 0));
+	
+	paredes[0] = new Pared();
+	paredes[0]->setPos(e.getPared(0).getPos() + v);
+	paredes[0]->setLim(Vector3D(-10.0f, 0, 165.0f),Vector3D(10.0f, 0, -105.0f));
+	paredes[0]->setColor(255,0,0);
+	paredes[1] = new Pared();
+	paredes[1]->setPos(e.getPared(1).getPos() + v);
+	paredes[1]->setColor(0,255,0);
+	paredes[1]->setLim(Vector3D(-10.0f, 0, 165.0f),Vector3D(10.0f, 0, -105.0f));
+	paredes[2] = new Pared();
+	paredes[2]->setPos(e.getPared(2).getPos() + v);
+	paredes[2]->setColor(0,0,255);
+	paredes[2]->setLim(Vector3D(0, -7.5f, 165.0f),Vector3D(0, 7.5f, -105.0f));
+	paredes[3] = new Pared();
+	paredes[3]->setPos(e.getPared(3).getPos() + v);
+	paredes[3]->setColor(255,255,255);
+	paredes[3]->setLim(Vector3D(0, -7.5f, 165.0f),Vector3D(0, 7.5f, -105.0f));
+
+}
+
+Pared Escenario::getPared(int i)
+{
+	return *paredes[i];
 }
 
 void Escenario::dibuja()
 {
-	suelo.dibuja();
+	for(int i=0; i<MAX_PAREDES; i++)
+	{
+		paredes[i]->dibuja();
+	}
+	/*suelo.dibuja();
 	techo.dibuja();
 	pared_dcha.dibuja();
-	pared_izq.dibuja();
+	pared_izq.dibuja();*/
+}
+
+void Escenario::mueve(float t)
+{
+	Objeto::mueve(t);
+	for(int i=0; i<MAX_PAREDES; i++)
+	{
+		paredes[i]->mueve(t);
+	}
 }
 
 Escenario::~Escenario(void)
 {
+
 }
 
 /*void Caja::SetColor( unsigned char r,unsigned char v, unsigned char a)
@@ -132,109 +168,52 @@ Escenario::~Escenario(void)
 	azul=a;
 }*/
 
-void Escenario::Mueve(float t)
+/*void Escenario::mueve(float t)
 {
+	for(int i=0; i<MAX_PAREDES;i++)
+	{
+		paredes[i].mueve(t);
+	}
+	suelo.mueve(t);
+	techo.mueve(t);
+	pared_dcha.mueve(t);
+	pared_izq.mueve(t);*/
 
-	suelo.esquina1.z=suelo.esquina1.z+velocidad.z*t+0.5f*aceleracion.z*t*t;
-	techo.esquina1.z=techo.esquina1.z+velocidad.z*t+0.5f*aceleracion.z*t*t;
-	pared_dcha.esquina1.z=pared_dcha.esquina1.z+velocidad.z*t+0.5f*aceleracion.z*t*t;
-	pared_izq.esquina1.z=pared_izq.esquina1.z+velocidad.z*t+0.5f*aceleracion.z*t*t;
-
-	suelo.esquina2.z=suelo.esquina2.z+velocidad.z*t+0.5f*aceleracion.z*t*t;
-	techo.esquina2.z=techo.esquina2.z+velocidad.z*t+0.5f*aceleracion.z*t*t;
-	pared_dcha.esquina2.z=pared_dcha.esquina2.z+velocidad.z*t+0.5f*aceleracion.z*t*t;
-	pared_izq.esquina2.z=pared_izq.esquina2.z+velocidad.z*t+0.5f*aceleracion.z*t*t;
-
-	suelo.esquina3.z=suelo.esquina3.z+velocidad.z*t+0.5f*aceleracion.z*t*t;
-	techo.esquina3.z=techo.esquina3.z+velocidad.z*t+0.5f*aceleracion.z*t*t;
-	pared_dcha.esquina3.z=pared_dcha.esquina3.z+velocidad.z*t+0.5f*aceleracion.z*t*t;
-	pared_izq.esquina3.z=pared_izq.esquina3.z+velocidad.z*t+0.5f*aceleracion.z*t*t;
-
-	suelo.esquina4.z=suelo.esquina4.z+velocidad.z*t+0.5f*aceleracion.z*t*t;
-	techo.esquina4.z=techo.esquina4.z+velocidad.z*t+0.5f*aceleracion.z*t*t;
-	pared_dcha.esquina4.z=pared_dcha.esquina4.z+velocidad.z*t+0.5f*aceleracion.z*t*t;
-	pared_izq.esquina4.z=pared_izq.esquina4.z+velocidad.z*t+0.5f*aceleracion.z*t*t;
-
-	/*suelo.limite4.z=suelo.limite4.z+velocidad.z*t+0.5f*aceleracion.z*t*t;
-	techo.limite4.z=techo.limite4.z+velocidad.z*t+0.5f*aceleracion.z*t*t;
-	pared_dcha.limite4.z=pared_dcha.limite4.z+velocidad.z*t+0.5f*aceleracion.z*t*t;
-	pared_izq.limite4.z=pared_izq.limite4.z+velocidad.z*t+0.5f*aceleracion.z*t*t;*/
 
 	/*posicion.y=posicion.y+velocidad.y*t+0.5f*aceleracion.y*t*t;
 	velocidad.x=velocidad.x+aceleracion.x*t;
 	velocidad.y=velocidad.y+aceleracion.y*t;*/
-}
+	
+	
+		/*suelo.limite1.z=suelo.limite1.z+velocidad.z*t+0.5f*aceleracion.z*t*t;
+		suelo.limite2.z=suelo.limite2.z+velocidad.z*t+0.5f*aceleracion.z*t*t;
+		techo.limite1.z=techo.limite1.z+velocidad.z*t+0.5f*aceleracion.z*t*t;
+		techo.limite2.z=techo.limite2.z+velocidad.z*t+0.5f*aceleracion.z*t*t;
+		pared_dcha.limite1.z=pared_dcha.limite1.z+velocidad.z*t+0.5f*aceleracion.z*t*t;
+		pared_dcha.limite2.z=pared_dcha.limite2.z+velocidad.z*t+0.5f*aceleracion.z*t*t;
+		pared_izq.limite1.z=pared_izq.limite1.z+velocidad.z*t+0.5f*aceleracion.z*t*t;
+		pared_izq.limite2.z=pared_izq.limite2.z+velocidad.z*t+0.5f*aceleracion.z*t*t;*/
+		
+	
+//}
 
 
 
 
 
-void Escenario::SetVel(float vx, float vy, float vz)
+/*void Escenario::setVel(float vx, float vy, float vz)
 {
 	velocidad.x=vx;
 	velocidad.y=vy;
 	velocidad.z=vz;
-} 
+} */
 
 
+/*bool Bloque::operator +=(Pared *pa){
+	if(num_pared<MAX_PAREDES){
+		pa[num_pared++]=paredes;
+		return true;
+	}
+	else return false;
+}*/
 
-
-
-//////////////////////////////////////////////////////
-/*
-PARA PROBAR CON ESQUINAS
-
-	suelo.esquina1.x= -10.0f;
-	suelo.esquina1.y= 0.0f;
-	suelo.esquina1.z= 10.0f;
-	suelo.esquina2.x= 10.0f;
-	suelo.esquina2.y= 0.0f;
-	suelo.esquina2.z= 10.0f;
-	suelo.esquina3.x= 10.0f;
-	suelo.esquina3.y= 0.0f;
-	suelo.esquina3.z= -1000.0f;
-	suelo.esquina4.x= -10.0f;
-	suelo.esquina4.y= 0.0f;
-	suelo.esquina4.z= -1000.0f;
-
-
-	techo.esquina1.x= -10.0f;
-	techo.esquina1.y= 15.0f;
-	techo.esquina1.z= 10.0f;
-	techo.esquina2.x= 10.0f;
-	techo.esquina2.y= 15.0f;
-	techo.esquina2.z= 10.0f;
-	techo.esquina3.x= 10.0f;
-	techo.esquina3.y= 15.0f;
-	techo.esquina3.z= -1000.0f;
-	techo.esquina4.x= -10.0f;
-	techo.esquina4.y= 15.0f;
-	techo.esquina4.z= -1000.0f;
-
-	pared_dcha.esquina1.x= 10.0f;
-	pared_dcha.esquina1.y= 0.0f;
-	pared_dcha.esquina1.z= 10.0f;
-	pared_dcha.esquina2.x= 10.0f;
-	pared_dcha.esquina2.y= 15.0f;
-	pared_dcha.esquina2.z= 10.0f;
-	pared_dcha.esquina3.x= 10.0f;
-	pared_dcha.esquina3.y= 15.0f;
-	pared_dcha.esquina3.z= -1000.0f;
-	pared_dcha.esquina4.x= 10.0f;
-	pared_dcha.esquina4.y= 0.0f;
-	pared_dcha.esquina4.z= -1000.0f;
-
-	pared_izq.esquina1.x= -10.0f;
-	pared_izq.esquina1.y= 0.0f;
-	pared_izq.esquina1.z= 10.0f;
-	pared_izq.esquina2.x= -10.0f;
-	pared_izq.esquina2.y= 15.0f;
-	pared_izq.esquina2.z= 10.0f;
-	pared_izq.esquina3.x= -10.0f;
-	pared_izq.esquina3.y= 15.0f;
-	pared_izq.esquina3.z= -1000.0f;
-	pared_izq.esquina4.x= -10.0f;
-	pared_izq.esquina4.y= 0.0f;
-	pared_izq.esquina4.z= -1000.0f;
-
-	*/

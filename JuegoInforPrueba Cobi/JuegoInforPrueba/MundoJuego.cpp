@@ -18,21 +18,23 @@ void Mundo::Dibuja()
 			0.0, y_ojo, 0.0,      // hacia que punto mira  (0,0,0) 
 			0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)    
 
-	escenario.dibuja();
+	
 	personaje.dibuja();
 	listaBloques.dibuja();
+	listaEscenario.dibuja();
 }
 
 void Mundo::Mueve()
 {
-	escenario.Mueve(0.025f);
+	listaEscenario.mueve(0.025f);
 	personaje.mueve(0.075f);
 	listaBloques.mueve(0.025f);
 	listaBloques.alctualizarBloques(personaje.getPos());
+	listaEscenario.actualizarEscenario(personaje.getPos());
 
-	Interaccion::colision(personaje,escenario);
+	/*Interaccion::colision(personaje,escenario);
 	if (const Celda * miCeldaColison = listaBloques.colision(personaje))
-		personaje.miColor = miCeldaColison->miColor;
+		personaje.miColor = miCeldaColison->miColor;*/
 }
 
 void Mundo::Inicializa()
