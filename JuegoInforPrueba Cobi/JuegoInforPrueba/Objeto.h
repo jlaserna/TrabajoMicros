@@ -8,7 +8,9 @@ private:
 	Vector3D velocidad;
 	Vector3D aceleracion;
 
-protected:
+	float radio = 1.0f;
+
+public:
 	void setVel(Vector3D velocidad) { this->velocidad = velocidad; };
 	void setPos(Vector3D posicion) { this->posicion = posicion; };
 	void setAccel(Vector3D aceleracion) { this->aceleracion = aceleracion; };
@@ -21,8 +23,16 @@ protected:
 	Vector3D getVel() { return velocidad; };
 	Vector3D getPos() { return posicion; };
 	Vector3D getAccel() { return aceleracion; };
+	void setRadio(float r) { this->radio = radio; };
+	float getRadio() { return radio; }
 
-public:
+	struct color
+	{
+		int r = 0;
+		int g = 0;
+		int b = 0;
+	} miColor;
+
 	Objeto();
 	virtual void mueve(float t);
 	virtual void dibuja() = 0;

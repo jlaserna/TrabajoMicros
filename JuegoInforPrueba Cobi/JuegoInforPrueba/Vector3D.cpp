@@ -40,7 +40,7 @@ Vector3D Vector3D::operator + (Vector3D &v)
 	Vector3D res;
 	res.x=x+v.x;
 	res.y=y+v.y;
-	res.z=z+v.y;
+	res.z=z+v.z;
 	return res;
 }
 

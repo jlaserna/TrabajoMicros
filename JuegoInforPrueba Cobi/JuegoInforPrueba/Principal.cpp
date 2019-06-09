@@ -88,7 +88,7 @@ void OnTimer(int value)
 {
 //poner aqui el código de animacion
 	mundo.Mueve();
-	mundo.Tecla(keystates);
+	mundo.tecla(keystates);
 	//no borrar estas lineas
 	glutTimerFunc(25,OnTimer,0);
 	glutPostRedisplay();

@@ -18,7 +18,7 @@ public:
 	Vector3D esquina3;
 	Vector3D esquina4;
 
-	void Dibuja();
+	void dibuja();
 	void SetColor(unsigned char r,unsigned char v, unsigned char a);
 private:
 	unsigned char rojo;

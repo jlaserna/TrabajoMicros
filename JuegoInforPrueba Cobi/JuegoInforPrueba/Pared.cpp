@@ -6,7 +6,7 @@ Pared::Pared(void)
 	rojo=verde=azul=255;
 }
 
-void Pared::Dibuja()
+void Pared::dibuja()
 {
 	/*glDisable(GL_LIGHTING);
 	glColor3ub(rojo,verde,azul);

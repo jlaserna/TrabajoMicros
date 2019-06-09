@@ -1,19 +1,19 @@
-#include "Pared.h"   //el include no es necesario que ponga “dominio”
-					//porque ya estamos en dicha carpeta.
 #pragma once
-class Bloque
+#include "Objeto.h"
+#include "Celda.h"
+
+class Bloque :
+	public Objeto
 {
+private:
+	Celda *listaCeldas[3];
 public:
-	Bloque(void);
-	~Bloque(void);
-	Pared suelo;
-	Pared techo;
-	Pared pared_izq;
-	Pared pared_dcha;
-	Vector3D aceleracion;
-	Vector3D velocidad;
-	//void SetColor(unsigned char r,unsigned char v, unsigned char a);
-	void Dibuja();
-	void Mueve(float t);
-	void SetVel(float vx, float vy, float vz);
+	Bloque();
+	Bloque(Bloque b, Vector3D v);
+
+	Celda getCelda(int i);
+	void dibuja();
+	void mueve(float t);
+	~Bloque();
 };
+
