@@ -31,8 +31,8 @@ void Mundo::Mueve()
 	listaBloques.alctualizarBloques(personaje.getPos());
 
 	Interaccion::colision(personaje,escenario);
-	if (Interaccion::colision(personaje, listaBloques[0]->getCelda(1)))
-		personaje.miColor = listaBloques[0]->getCelda(1).miColor;
+	if (const Celda * miCeldaColison = listaBloques.colision(personaje))
+		personaje.miColor = miCeldaColison->miColor;
 }
 
 void Mundo::Inicializa()
@@ -41,14 +41,6 @@ void Mundo::Inicializa()
 	y_ojo=7.5;
 	z_ojo=30;
 
-	listaBloques.agregar(new Bloque());
-	listaBloques.generarNuevoBloque();
-	listaBloques.generarNuevoBloque();
-	listaBloques.generarNuevoBloque();
-	listaBloques.generarNuevoBloque();
-	listaBloques.generarNuevoBloque();
-	listaBloques.generarNuevoBloque();
-	listaBloques.generarNuevoBloque();
 }
 
 void Mundo::tecla(bool keystates[])

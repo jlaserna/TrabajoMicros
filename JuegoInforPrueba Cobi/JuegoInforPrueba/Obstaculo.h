@@ -6,6 +6,7 @@ class Obstaculo :
 public:
 	Obstaculo();
 	void dibuja();
+	tipoCelda getTipoCelda() { return OBSTACULO; }
 	virtual ~Obstaculo();
 };
 

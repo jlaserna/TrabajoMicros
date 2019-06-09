@@ -1,8 +1,9 @@
 #pragma once
 #include "Bloque.h"
+#include "Personaje.h"
 #include "Vector3D.h"
 
-#define MAX_ELEMENTOS 8
+#define MAX_ELEMENTOS 19
 
 class ListaBloques
 {
@@ -16,6 +17,7 @@ public:
 	bool generarNuevoBloque();
 	void destruirUltimoBloque();
 	void destruirContenido();
+	const Celda* colision(Personaje per);
 	void alctualizarBloques(Vector3D pos);
 	bool existeElemento(Bloque* d);
 	void dibuja();

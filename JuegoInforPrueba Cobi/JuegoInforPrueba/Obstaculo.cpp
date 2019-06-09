@@ -7,7 +7,7 @@ Obstaculo::Obstaculo()
 {
 	miColor.r = 0;
 	miColor.g = 255;
-	miColor.b = 255;
+	miColor.b = 0;
 }
 
 void Obstaculo::dibuja()

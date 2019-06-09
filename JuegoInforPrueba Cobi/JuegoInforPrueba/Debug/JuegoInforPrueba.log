@@ -1,2 +1,7 @@
-﻿  MundoJuego.cpp
+﻿  Bloque.cpp
+Z:\GitHub\TrabajoMicros\JuegoInforPrueba Cobi\JuegoInforPrueba\Bloque.cpp(80): warning C4805: '==': combinación no segura del tipo 'tipoCelda' y el tipo 'bool' en la operación
+Z:\GitHub\TrabajoMicros\JuegoInforPrueba Cobi\JuegoInforPrueba\Bloque.cpp(84): warning C4805: '==': combinación no segura del tipo 'tipoCelda' y el tipo 'bool' en la operación
+Z:\GitHub\TrabajoMicros\JuegoInforPrueba Cobi\JuegoInforPrueba\Bloque.cpp(80): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+Z:\GitHub\TrabajoMicros\JuegoInforPrueba Cobi\JuegoInforPrueba\Bloque.cpp(84): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+LINK : warning LNK4076: archivo de estado incremental 'Z:\GitHub\TrabajoMicros\JuegoInforPrueba Cobi\Debug\JuegoInforPrueba.ilk' no válido (que se eliminará); se vinculará de manera no incremental
   JuegoInforPrueba.vcxproj -> Z:\GitHub\TrabajoMicros\JuegoInforPrueba Cobi\Debug\JuegoInforPrueba.exe

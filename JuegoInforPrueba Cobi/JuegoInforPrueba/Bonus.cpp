@@ -19,6 +19,10 @@ void Bonus::dibuja()
 }
 
 
+void Bonus::aplicarBonus(Personaje& per)
+{
+}
+
 Bonus::~Bonus()
 {
 }

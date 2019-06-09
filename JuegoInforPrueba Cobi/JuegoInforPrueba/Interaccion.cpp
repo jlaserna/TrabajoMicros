@@ -44,7 +44,7 @@ void Interaccion::colision(Personaje &h, Escenario c)
 
 bool Interaccion::colision(Personaje &p, Celda c)
 {
-	float dif = sqrt(((p.getPos().x - c.getPos().x) * (p.getPos().x - c.getPos().x)) + ((p.getPos().z - c.getPos().z) * (p.getPos().z - c.getPos().z)));
+	float dif = sqrt(((p.getPos().x - c.getPos().x) * (p.getPos().x - c.getPos().x)) + ((p.getPos().y - c.getPos().y) * (p.getPos().y - c.getPos().y)) + ((p.getPos().z - c.getPos().z) * (p.getPos().z - c.getPos().z)));
 	if (dif <= (p.getRadio() + c.getRadio()))
 	{
 		return true;

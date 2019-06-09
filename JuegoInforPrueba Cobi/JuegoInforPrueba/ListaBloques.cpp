@@ -1,12 +1,18 @@
 #include "ListaBloques.h"
 #include "Bloque.h"
 #include "Vector3D.h"
+#include "Interaccion.h"
 
 
 ListaBloques::ListaBloques() {
 	numero = 0;
 	for (int i = 0; i < MAX_ELEMENTOS; i++)
 		lista[i] = 0;
+
+	agregar(new Bloque());
+	for (int i = 0; i < MAX_ELEMENTOS - 1; i++)
+		generarNuevoBloque();
+	
 }
 
 bool ListaBloques::agregar(Bloque* d) {
@@ -49,9 +55,19 @@ void ListaBloques::destruirContenido() {
 
 }
 
+const Celda* ListaBloques::colision(Personaje per)
+{
+	for (int i = 0; i < numero; i++)
+		for (int j = 0; j < 3; j++)
+			if (Interaccion::colision(per, lista[i]->getCelda(j)))
+				return &lista[i]->getCelda(j);
+
+	return nullptr;
+}
+
 void ListaBloques::alctualizarBloques(Vector3D pos)
 {
-	if (pos.z + 30.0f <= lista[0]->getPos().z) {
+	if (pos.z + 60.0f <= lista[0]->getPos().z) {
 		destruirUltimoBloque();
 		generarNuevoBloque();
 	}
@@ -83,16 +99,21 @@ bool ListaBloques::generarNuevoBloque()
 	if (numero == MAX_ELEMENTOS)
 		return false;
 	else {
-		Bloque* nuevoBloque = new Bloque(*lista[numero-1], Vector3D(0, 0, -30.0f));
-		agregar(nuevoBloque);
+		int aux = numero - 1;
+		Bloque* nuevoBloqueArriba = new Bloque(*lista[aux], Vector3D(0, 10.0f, 0.0f));
+		Bloque* nuevoBloqueAbajo = new Bloque(*lista[aux], Vector3D(0, 0, -30.0f));
+		agregar(nuevoBloqueArriba);
+		agregar(nuevoBloqueAbajo);
 		return true;
 	}
 }
 
 void ListaBloques::destruirUltimoBloque()
 {
-	if(numero > 1)
+	if (numero > 1) {
+		eliminar(1);
 		eliminar(0);
+	}
 }
 
 ListaBloques::~ListaBloques()
