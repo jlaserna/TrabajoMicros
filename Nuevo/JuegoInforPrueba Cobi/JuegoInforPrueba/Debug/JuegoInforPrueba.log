@@ -1,0 +1,6 @@
+﻿  ListaEscenario.cpp
+  MundoJuego.cpp
+  Principal.cpp
+  Generando código...
+C:\Users\Javier\Desktop\JuegoInforPrueba Cobi\JuegoInforPrueba\ListaEscenario.cpp(108): warning C4715: 'ListaEscenario::colision': no todas las rutas de acceso de control devuelven un valor
+  JuegoInforPrueba.vcxproj -> C:\Users\Javier\Desktop\JuegoInforPrueba Cobi\Debug\JuegoInforPrueba.exe
