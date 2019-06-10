@@ -35,6 +35,7 @@ public:
 	void iniciar() { if (miEstadoJuego == INICIO) miEstadoJuego = JUGANDO; }
 	void volverAJugar() { if (miEstadoJuego == PARADO) miEstadoJuego = JUGANDO; }
 	void gameOver() { if (miEstadoJuego == JUGANDO) miEstadoJuego = FIN; }
+	estadoJuego getEstado() { return miEstadoJuego; }
 };
 
 

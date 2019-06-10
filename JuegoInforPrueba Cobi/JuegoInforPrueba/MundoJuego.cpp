@@ -51,6 +51,9 @@ void Mundo::Inicializa()
 
 	jugando = false;
 
+	w = 800;
+	h = 600;
+
 }
 
 void Mundo::tecla(bool keystates[])
@@ -125,6 +128,34 @@ void Mundo::teclaEspecial(unsigned char key)
 		personaje.izquierda();
 		break;
 
+	}
+
+}
+
+void Mundo::ratonClick(int button, int state, int x, int y) {
+
+	if (button == GLUT_LEFT_BUTTON && miHUD.getEstado() == INICIO) {
+		if (state == GLUT_DOWN) {
+			if (x > w/2 && y > h/2) {
+				listaBloques.setVelMax(10.0f);
+			}
+
+			if (x > w / 2 && y < h / 2) {
+				listaBloques.setVelMax(50.0f);
+			}
+
+			if (x < w / 2 && y > h / 2) {
+				listaBloques.setVelMax(100.0f);
+			}
+
+			if (x < w / 2 && y < h / 2) {
+				listaBloques.setVelMax(200.0f);
+			}
+
+			tiempoJuego.start();
+			miHUD.iniciar();
+			jugando = true;
+		}
 	}
 
 }

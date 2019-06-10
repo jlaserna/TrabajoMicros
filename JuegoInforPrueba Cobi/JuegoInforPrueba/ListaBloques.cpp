@@ -6,6 +6,7 @@
 
 ListaBloques::ListaBloques() {
 	numero = 0;
+	velMax = 0.0f;
 	for (int i = 0; i < MAX_ELEMENTOS; i++)
 		lista[i] = 0;
 
@@ -71,7 +72,7 @@ void ListaBloques::alctualizarBloques(Vector3D pos)
 		destruirUltimoBloque();
 		generarNuevoBloque();
 	}
-	if(lista[numero-1]->getVel().z >= 70.0f)
+	if(lista[numero-1]->getVel().z >= velMax)
 		for (int i = 0; i < numero; i++) {
 			lista[i]->setAccel(Vector3D(0, 0, 0));
 		}
