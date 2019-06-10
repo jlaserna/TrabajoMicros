@@ -9,7 +9,7 @@ using ETSIDI::SpriteSequence;
 
 class Obstaculo : public Celda
 {
-protected:
+private:
 	//Pared lPared[5];
 	//Textura tSuperior;
 	//SpriteSequence sprite;
@@ -17,7 +17,6 @@ public:
 	//Pared lPared[5];
 	Obstaculo();
 	void dibuja();
-	tipoCelda getTipoCelda() { return OBSTACULO; }
 	//void setTextura(string lTexturas[5]);
 	virtual ~Obstaculo();
 

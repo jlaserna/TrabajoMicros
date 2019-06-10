@@ -6,6 +6,7 @@
 ListaEscenario::ListaEscenario()
 {
 	numero = 0;
+	velMax = 30.0f;
 	for (int i = 0; i < MAX_ESCENARIO; i++)
 		escenario[i] = 0;
 	
@@ -60,9 +61,10 @@ void ListaEscenario::actualizarEscenario(Vector3D pos)
 		generarNuevoEscenario();
 	}
 	//añadido para probar velocidad
-	if(escenario[numero-1]->getVel().z >= 70.0f)
+	if(escenario[numero-1]->getVel().z >= velMax)
 		for (int i = 0; i < numero; i++) {
 			escenario[i]->setAccel(Vector3D(0, 0, 0));
+			escenario[i]->setVel(Vector3D(0, 0, velMax));
 		}
 }
 

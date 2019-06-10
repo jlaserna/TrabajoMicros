@@ -9,6 +9,7 @@ class ListaEscenario
 private:
 	Escenario *escenario[MAX_ESCENARIO];
 	int numero;
+	float velMax;
 
 public:
 	ListaEscenario();
@@ -24,6 +25,7 @@ public:
 	void eliminar(Escenario* es);
 	Escenario* operator [](int i);
 	int getNumero() { return numero; }
+	void setVelMax(float velMax) { this->velMax = velMax; }
 	~ListaEscenario();
 
 };

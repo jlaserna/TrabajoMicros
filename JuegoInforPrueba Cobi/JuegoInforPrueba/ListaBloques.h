@@ -10,6 +10,7 @@ class ListaBloques
 private:
 	Bloque* lista[MAX_ELEMENTOS];
 	int numero;
+	float velMax;
 
 public:
 	ListaBloques();
@@ -17,7 +18,7 @@ public:
 	bool generarNuevoBloque();
 	void destruirUltimoBloque();
 	void destruirContenido();
-	const Celda* colision(Personaje per);
+	Celda* colision(Personaje per);
 	void alctualizarBloques(Vector3D pos);
 	bool existeElemento(Bloque* d);
 	void dibuja();
@@ -26,6 +27,7 @@ public:
 	void eliminar(Bloque* d);
 	Bloque* operator [](int i);
 	int getNumero() { return numero; }
+	void setVelMax(float velMax) { this->velMax = velMax; }
 	~ListaBloques();
 
 };

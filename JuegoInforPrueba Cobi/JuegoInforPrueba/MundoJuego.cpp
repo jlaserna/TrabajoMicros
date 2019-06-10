@@ -23,9 +23,7 @@ void Mundo::Dibuja()
 	personaje.dibuja();
 	listaBloques.dibuja();
 
-	int a[3] = { 0,0,5 };
-
-	miHUD.dibuja(personaje, tiempoJuego, a);
+	miHUD.dibuja(personaje, tiempoJuego, contadorMonedas);
 }
 
 void Mundo::Mueve()
@@ -39,8 +37,23 @@ void Mundo::Mueve()
 	listaEscenario.actualizarEscenario(personaje.getPos());
 
 	Interaccion::colisionEscenario(personaje);
-	/*if (const Celda * miCeldaColison = listaBloques.colision(personaje))
-		personaje.miColor = miCeldaColison->miColor;*/
+	Celda* miCeldaColison = listaBloques.colision(personaje);
+	if( miCeldaColison != NULL)
+		switch (miCeldaColison->getTipoCelda())
+		{
+		case BONUSVELOCIDAD:
+			listaBloques.setVelMax(10.0f);
+			listaEscenario.setVelMax(10.0f);
+			break;
+		case BONUSMONEDA:
+			contadorMonedas++;
+			break;
+		case BONUSFANTASMA:
+			break;
+		case OBSTACULO:
+			miHUD.gameOver();//!personajeInvencible
+			break;
+		}
 }
 
 void Mundo::Inicializa()
@@ -50,6 +63,7 @@ void Mundo::Inicializa()
 	z_ojo=30;
 
 	jugando = false;
+	contadorMonedas = 0;
 
 }
 
@@ -125,6 +139,21 @@ void Mundo::teclaEspecial(unsigned char key)
 		personaje.izquierda();
 		break;
 
+	}
+
+}
+
+void Mundo::setBonusActivo(int index) {
+	bonusActivos[index] = true;
+
+	if (bonusActivos[0]) {
+		listaBloques.setVelMax(10.0f);
+		//bonusTimer.reset();
+	}
+
+	if (bonusActivos[1]) {
+		jugadorInvencible = true;
+		//bonusTimer.reset();
 	}
 
 }

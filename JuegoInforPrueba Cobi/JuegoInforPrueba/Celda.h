@@ -1,16 +1,18 @@
 #pragma once
 #include "Objeto.h"
 
-enum tipoCelda { OBSTACULO, BONUS,/* BONUSMONEDA, BONUSVELOCIDAD, BONUSFANTASMA,*/ VACIO , NONE};
+enum tipoCelda { OBSTACULO, BONUS, VACIO , NONE, BONUSMONEDA, BONUSVELOCIDAD, BONUSFANTASMA};
 
 class Celda :
 	public Objeto
 {
 public:
+	tipoCelda miTipoCelda = NONE;
+public:
 	Celda();
 	void dibuja();
 	virtual ~Celda();
-	virtual tipoCelda getTipoCelda() { return NONE; };
+	tipoCelda getTipoCelda() { return miTipoCelda; };
 	friend class Interaccion;
 };
 

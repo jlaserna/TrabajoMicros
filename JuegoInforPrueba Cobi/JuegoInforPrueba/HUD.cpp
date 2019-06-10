@@ -20,7 +20,7 @@ HUD::HUD()
 	bonusF = new SpriteSequence("resources/textures/BonFantasmaVacio.png", 1, 1, 10, true, -415, -650, 110, 140);
 }
 
-void HUD::dibuja(Personaje p, Timer tJugando, int* nEnemigos)
+void HUD::dibuja(Personaje p, Timer tJugando, int nMonedas)
 {
 	glMatrixMode(GL_PROJECTION);
 	glPushMatrix();
@@ -66,7 +66,7 @@ void HUD::dibuja(Personaje p, Timer tJugando, int* nEnemigos)
 
 		contMon->draw();
 		ss.str("");
-		ss << nEnemigos[2] << endl;
+		ss << nMonedas << endl;
 		setFont("resources/fonts/Bitwise.ttf", 18);
 		printxy(ss.str().c_str(), 485, -500, 0);
 

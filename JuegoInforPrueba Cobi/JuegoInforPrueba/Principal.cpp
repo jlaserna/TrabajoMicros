@@ -12,6 +12,7 @@ void OnTimer(int value); //esta funcion sera llamada cuando transcurra una tempo
 void OnKeyboardDown(unsigned char key, int x, int y); //cuando se pulse una tecla	
 //void OnSpecialKeyboardDown(int key, int x, int y);
 void onKeyboardUp(unsigned char key, int x, int y);
+void reshape(int w, int h);
 
 unsigned char key;
 bool keystates[256];
@@ -45,6 +46,7 @@ int main(int argc,char* argv[])
 	glutKeyboardUpFunc(onKeyboardUp);
 	glutIgnoreKeyRepeat(1);
 	//glutSpecialFunc(OnSpecialKeyboardDown); //gestion de los cursores
+	glutReshapeFunc(reshape);           //gestion del tamaño de la ventana
 
 	mundo.Inicializa();
 		

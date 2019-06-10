@@ -10,6 +10,7 @@ Obstaculo::Obstaculo()//:sprite("resources/textures/obstaculo.png",1,1)
 	miColor.r = 0;
 	miColor.g = 255;
 	miColor.b = 0;
+	miTipoCelda = OBSTACULO;
 	/*lPared[0] = new Pared();//suelo
 	lPared[0]->setPos(this->getPos() + Vector3D(0, 0, 0));
 	lPared[0]->setLim(Vector3D(-10.0f, 0, 165.0f),Vector3D(10.0f, 0, -10.0f));*/

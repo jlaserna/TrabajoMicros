@@ -10,7 +10,6 @@ protected:
 public:
 	Bonus();
 	/*virtual*/ void dibuja();
-	tipoCelda getTipoCelda() { return BONUS; }
 	virtual void ponerBonus(Personaje& per);
 	virtual ~Bonus();
 	//virtual void ponerBonus(Personaje &p) = 0;
