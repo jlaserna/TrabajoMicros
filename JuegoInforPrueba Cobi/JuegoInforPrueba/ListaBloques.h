@@ -10,7 +10,6 @@ class ListaBloques
 private:
 	Bloque* lista[MAX_ELEMENTOS];
 	int numero;
-	float velMax;
 
 public:
 	ListaBloques();
@@ -27,7 +26,6 @@ public:
 	void eliminar(Bloque* d);
 	Bloque* operator [](int i);
 	int getNumero() { return numero; }
-	void setVelMax(float vel) { velMax = vel; }
 	~ListaBloques();
 
 };

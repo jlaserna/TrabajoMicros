@@ -1,3 +1,4 @@
+/*Clase base que incorpora todas las funciones utilizadas por el resto de objetos que realizan algún tipo de movimiento o de dibujo*/
 #include "Vector3D.h"
 
 #pragma once

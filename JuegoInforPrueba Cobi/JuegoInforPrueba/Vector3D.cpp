@@ -77,6 +77,11 @@ Vector3D Vector3D::operator + (Vector3D &v)
 	 else return false;
  }
 
+ bool Vector3D::operator !=(Vector3D v){ 
+	 if(this->x != v.x && this->y != v.y && this->z != v.z) return true;
+	 else return false;
+ }
+
 Vector3D::~Vector3D(void)
 {
 }

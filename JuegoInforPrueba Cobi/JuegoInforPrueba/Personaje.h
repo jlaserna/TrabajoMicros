@@ -1,4 +1,6 @@
 #include "Objeto.h"
+#include "ETSIDI.h"
+using ETSIDI::SpriteSequence;
 
 #define GLOBAL_ACCEL -9.81f
 
@@ -11,6 +13,7 @@ private:
 	bool bajando;
 	bool moviendoDerecha;
 	bool moviendoIzquierda;
+	SpriteSequence sprite;
 
 public:
 	Personaje();

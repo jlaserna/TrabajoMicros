@@ -6,7 +6,9 @@
 ListaEscenario::ListaEscenario()
 {
 	numero = 0;
-	for (int i = 0; i < MAX_ESCENARIO; i++) escenario[i] = 0;
+	for (int i = 0; i < MAX_ESCENARIO; i++)
+		escenario[i] = 0;
+	
 	agregar(new Escenario());
 	for (int i = 0; i < MAX_ESCENARIO-1; i++){
 		generarNuevoEscenario();
@@ -15,11 +17,10 @@ ListaEscenario::ListaEscenario()
 
 
 bool ListaEscenario::agregar(Escenario *es){
-	if(numero<MAX_ESCENARIO && !existeElemento(es)){
+	if(numero<MAX_ESCENARIO && !existeElemento(es))
 		escenario[numero++]=es;
-		return true;
-	}
 	else return false;
+	return true;
 }
 
 bool ListaEscenario::existeElemento(Escenario* es) {
@@ -54,10 +55,15 @@ void ListaEscenario::destruirContenido() {
 
 void ListaEscenario::actualizarEscenario(Vector3D pos)
 {
-	if (pos.z + 300.0f <= escenario[0]->getPos().z) {
+	if (pos.z + 170.0f <= escenario[0]->getPos().z) { //+300.0f
 		destruirUltimoEscenario();
 		generarNuevoEscenario();
 	}
+	//añadido para probar velocidad
+	if(escenario[numero-1]->getVel().z >= 70.0f)
+		for (int i = 0; i < numero; i++) {
+			escenario[i]->setAccel(Vector3D(0, 0, 0));
+		}
 }
 
 Escenario* ListaEscenario::operator [](int i)
@@ -86,7 +92,8 @@ bool ListaEscenario::generarNuevoEscenario()
 	if (numero == MAX_ESCENARIO)
 		return false;
 	else {
-		Escenario* nuevoEscenario = new Escenario(*escenario[numero-1], Vector3D(0, 0, -270.0f));
+		int aux= numero-1;
+		Escenario* nuevoEscenario = new Escenario(*escenario[aux], Vector3D(0, 0, -175.0f));//-270 original
 		agregar(nuevoEscenario);
 		return true;
 	}

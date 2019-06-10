@@ -12,8 +12,6 @@ void OnTimer(int value); //esta funcion sera llamada cuando transcurra una tempo
 void OnKeyboardDown(unsigned char key, int x, int y); //cuando se pulse una tecla	
 //void OnSpecialKeyboardDown(int key, int x, int y);
 void onKeyboardUp(unsigned char key, int x, int y);
-void ratonPulsado(int button, int state, int x, int y);
-void reshape(int w, int h);
 
 unsigned char key;
 bool keystates[256];
@@ -46,8 +44,6 @@ int main(int argc,char* argv[])
 	glutKeyboardFunc(OnKeyboardDown);
 	glutKeyboardUpFunc(onKeyboardUp);
 	glutIgnoreKeyRepeat(1);
-	glutMouseFunc(ratonPulsado);
-	glutReshapeFunc(reshape);
 	//glutSpecialFunc(OnSpecialKeyboardDown); //gestion de los cursores
 
 	mundo.Inicializa();
@@ -112,9 +108,5 @@ void reshape(int w, int h)		//Funcion que cambia los parametros de perspectiva p
 	gluPerspective(60, (GLfloat)w / (GLfloat)h, 0.1, 1000.0);
 	glMatrixMode(GL_MODELVIEW);
 
-	mundo.setSize(w, h);
-}
-
-void ratonPulsado(int button, int state, int x, int y) {
-	mundo.ratonClick(button, state, x, y);
+	//mundo.setSize(w, h);
 }

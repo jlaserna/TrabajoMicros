@@ -1,7 +1,7 @@
 #pragma once
 #include "Objeto.h"
 
-enum tipoCelda { OBSTACULO, BONUS, VACIO , NONE};
+enum tipoCelda { OBSTACULO, BONUS,/* BONUSMONEDA, BONUSVELOCIDAD, BONUSFANTASMA,*/ VACIO , NONE};
 
 class Celda :
 	public Objeto

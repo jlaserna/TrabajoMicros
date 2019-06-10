@@ -18,6 +18,9 @@
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Vacio.cpp" />
     <ClCompile Include="Vector3D.cpp" />
+    <ClCompile Include="BonusMoneda.cpp" />
+    <ClCompile Include="BonusFantasma.cpp" />
+    <ClCompile Include="BonusVelocidad.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bloque.h" />
@@ -36,5 +39,9 @@
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Vacio.h" />
     <ClInclude Include="Vector3D.h" />
+    <ClInclude Include="BonusMoneda.h" />
+    <ClInclude Include="BonusFantasma.h" />
+    <ClInclude Include="Textura.h" />
+    <ClInclude Include="BonusVelocidad.h" />
   </ItemGroup>
 </Project>

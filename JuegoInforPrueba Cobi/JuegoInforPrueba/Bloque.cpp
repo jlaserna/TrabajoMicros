@@ -1,6 +1,7 @@
 #include "Bloque.h"
 #include "Obstaculo.h"
 #include "Bonus.h"
+#include "BonusMoneda.h"
 #include "Vacio.h"
 #include "ETSIDI.h"
 
@@ -11,13 +12,22 @@ void Bloque::generarBloqueAleatorio(Bloque b)
 	
 	do {
 		for (int i = 0; i < 3; i++) {
-			switch (ETSIDI::lanzaDado(9) + ETSIDI::lanzaDado(9)) {
+			switch (ETSIDI::lanzaDado(9) + ETSIDI::lanzaDado(9) /*+ ETSIDI::lanzaDado(9)*/) {
 			case 2: case 3: case 4: case 5: case 10: case 11: case 12: case 13: case 14: case 15:
 				tipoNuevoBloque[i] = OBSTACULO;
 				break;
 			case 6: case 16:
 				tipoNuevoBloque[i] = BONUS;
 				break;
+				/*case 6: case 16:
+				tipoNuevoBloque[i] = BONUSMONEDA;
+				break;
+				case 19: case 21:
+				tipoNuevoBloque[i] = BONUSVELOCIDAD;
+				break;
+				case 20: case 22:
+				tipoNuevoBloque[i] = BONUSFANTASMA;
+				break;*/
 			case 7: case 8: case 9: case 17: case 18:
 				tipoNuevoBloque[i] = VACIO;
 				break;
@@ -50,11 +60,11 @@ Bloque::Bloque()
 	this->setVel(Vector3D(0, 0, 0.0f));
 	this->setAccel(Vector3D(0, 0, 1.0f));
 	listaCeldas[0] = new Obstaculo();
-	listaCeldas[0]->setPos(this->getPos() + Vector3D(-5.0, 0,0));
+	listaCeldas[0]->setPos(this->getPos() + Vector3D(-6.5, 0,0));
 	listaCeldas[1] = new Bonus();
 	listaCeldas[1]->setPos(this->getPos() + Vector3D(0, 0, 0));
 	listaCeldas[2] = new Vacio();
-	listaCeldas[2]->setPos(this->getPos() + Vector3D(5.0, 0, 0));
+	listaCeldas[2]->setPos(this->getPos() + Vector3D(6.5, 0, 0));
 }
 
 Bloque::Bloque(Bloque b, Vector3D v)
@@ -65,9 +75,9 @@ Bloque::Bloque(Bloque b, Vector3D v)
 	
 	generarBloqueAleatorio(b);
 
-	listaCeldas[0]->setPos(this->getPos() + Vector3D(-5.0, 0, 0));
+	listaCeldas[0]->setPos(this->getPos() + Vector3D(-6.5, 0, 0));
 	listaCeldas[1]->setPos(this->getPos() + Vector3D(0, 0, 0));
-	listaCeldas[2]->setPos(this->getPos() + Vector3D(5.0, 0, 0));
+	listaCeldas[2]->setPos(this->getPos() + Vector3D(6.5, 0, 0));
 }
 
 bool Bloque::sonCompatibles(Bloque b, tipoCelda* mTipoCelda)
@@ -104,9 +114,9 @@ void Bloque::dibuja()
 void Bloque::mueve(float t)
 {
 	Objeto::mueve(t);
-	listaCeldas[0]->setPos(this->getPos() + Vector3D(-5.0, 0, 0));
+	listaCeldas[0]->setPos(this->getPos() + Vector3D(-6.5, 0, 0));
 	listaCeldas[1]->setPos(this->getPos() + Vector3D(0, 0, 0));
-	listaCeldas[2]->setPos(this->getPos() + Vector3D(5.0, 0, 0));
+	listaCeldas[2]->setPos(this->getPos() + Vector3D(6.5, 0, 0));
 }
 
 Bloque::~Bloque()

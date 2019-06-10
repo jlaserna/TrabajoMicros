@@ -11,7 +11,7 @@ void Interaccion::colisionEscenario(Personaje &h)
 {
 	float xmax=10.0f-3.33f;
 	float xmin=-10.0f+3.33f;
-	float ymax=15.0f-1.0f;
+	float ymax=15.0f-6.0f;
 	float ymin=0.0f+1.0f;
 
 	if (h.getPos().x > xmax) {
@@ -47,6 +47,7 @@ bool Interaccion::colision(Personaje &p, Celda c)
 	float dif = sqrt(((p.getPos().x - c.getPos().x) * (p.getPos().x - c.getPos().x)) + ((p.getPos().y - c.getPos().y) * (p.getPos().y - c.getPos().y)) + ((p.getPos().z - c.getPos().z) * (p.getPos().z - c.getPos().z)));
 	if (dif <= (p.getRadio() + c.getRadio()))
 	{
+		/*if(listaCeldas[i]*/
 		return true;
 	}
 	return false;

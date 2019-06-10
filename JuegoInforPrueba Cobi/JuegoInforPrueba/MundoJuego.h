@@ -16,9 +16,6 @@ private:
 	HUD miHUD;
 	Timer tiempoJuego;
 
-	int w;
-	int h;
-
 	bool jugando;
 
 public: 
@@ -29,8 +26,6 @@ public:
 	void Mueve();
 	void Dibuja();
 	void teclaEspecial(unsigned char key);
-	void ratonClick(int button, int state, int x, int y);
-	void setSize(int w, int h) { this->w = w; this->h = h; }
 
 	float x_ojo;
 	float y_ojo;

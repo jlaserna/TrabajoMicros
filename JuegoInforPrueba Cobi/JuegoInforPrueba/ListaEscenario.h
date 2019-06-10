@@ -2,7 +2,7 @@
 #include "Pared.h"
 #include "Personaje.h"
 
-#define MAX_ESCENARIO 3
+#define MAX_ESCENARIO 6
 
 class ListaEscenario
 {

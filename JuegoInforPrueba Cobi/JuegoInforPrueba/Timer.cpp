@@ -32,8 +32,8 @@ void Timer::reset() {
 
 int Timer::getTimeS() {
 	if (parado)
-		return (timebase / 1000) % 60;
-	return ((glutGet(GLUT_ELAPSED_TIME) - timebase) / 1000) % 60;
+		return ((int)timebase / 1000) % 60;
+	return ((glutGet(GLUT_ELAPSED_TIME) - (int)timebase) / 1000) % 60;
 }
 
 int Timer::getTimeM() {

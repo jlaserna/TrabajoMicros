@@ -20,5 +20,7 @@ public:
 	void dibuja();
 	void mueve(float t);
 	~Bloque();
+
+	friend class Interaccion;
 };
 

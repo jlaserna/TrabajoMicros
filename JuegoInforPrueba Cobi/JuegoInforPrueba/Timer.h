@@ -4,7 +4,7 @@
 class Timer
 {
 private:
-	int timebase;
+	float timebase;//int
 	int interval;
 	int time_;
 	int elapsedTime;

@@ -1,18 +1,24 @@
 #include "Objeto.h"
+#include "ETSIDI.h"
+#include "Textura.h"
+//using ETSIDI::SpriteSequence;
 
 #pragma once
 class Pared: public Objeto
 {
 protected:
-	unsigned char rojo;
+	/*unsigned char rojo;
 	unsigned char verde;
-	unsigned char azul;
+	unsigned char azul;*/
+	//SpriteSequence sprite;
+	Textura textura;
 
 public:
 	Pared(void);
 	virtual ~Pared(void);
 	Vector3D limite1;
 	Vector3D limite2;
+	void setTextura(string path) { textura.setTextura(path); }
 
 
 

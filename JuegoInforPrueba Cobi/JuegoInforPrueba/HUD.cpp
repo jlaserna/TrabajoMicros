@@ -11,12 +11,13 @@ HUD::HUD()
 	miContador.setInterval(1000);
 	contadorColor.setInterval(500);
 	colorActual = 0;
-	cF = new Sprite("resources/textures/HUDzombie3.png", 565, -450, 60, 100);
+	/*cF = new Sprite("resources/textures/HUDzombie3.png", 565, -450, 60, 100);
 	cM = new Sprite("resources/textures/HUDzombie2.png", 565, -550, 50, 100);
-	cD = new Sprite("resources/textures/HUDzombie1.png", 565, -650, 40, 100);
+	cD = new Sprite("resources/textures/HUDzombie1.png", 565, -650, 40, 100);*/
 	menu = new Sprite("resources/textures/MenuInicio.png");
-	bonusV = new SpriteSequence("resources/textures/BonusVelocidad.png", 2, 1, 10, true, -565, 750, 70, 100);
-	bonusE = new SpriteSequence("resources/textures/BonusDisparo.png", 2, 1, 10, true, -565, 650, 70, 100);
+	contMon = new Sprite("resources/textures/MonUnica.png", 565, -500, 80, 100);
+	bonusV = new SpriteSequence("resources/textures/BonVelocidadVacio.png", 1, 1, 10, true, -535, -650, 110, 140);
+	bonusF = new SpriteSequence("resources/textures/BonFantasmaVacio.png", 1, 1, 10, true, -415, -650, 110, 140);
 }
 
 void HUD::dibuja(Personaje p, Timer tJugando, int* nEnemigos)
@@ -57,35 +58,52 @@ void HUD::dibuja(Personaje p, Timer tJugando, int* nEnemigos)
 		//if (j.getBonusActivo(1))
 			//bonusE->setState(0);
 		//else
-			bonusE->setState(1);
-		bonusE->draw();
+			bonusF->setState(1);
+		bonusF->draw();
+
+
+		//Contador Monedas
+
+		contMon->draw();
+		ss.str("");
+		ss << nEnemigos[2] << endl;
+		setFont("resources/fonts/Bitwise.ttf", 18);
+		printxy(ss.str().c_str(), 485, -500, 0);
 
 		//Contador enemigo tocho
-		cF->draw();
+		/*cF->draw();
 		ss.str("");
 		ss << nEnemigos[2] << endl;
 		setFont("resources/fonts/Bitwise.ttf", 12);
-		printxy(ss.str().c_str(), 485, -465, 0);
+		printxy(ss.str().c_str(), 485, -465, 0);*/
 
 		//Contador enemigo equilibrado
-		cM->draw();
+		/*cM->draw();
 		ss.str("");
 		ss << nEnemigos[1] << endl;
 		setFont("resources/fonts/Bitwise.ttf", 12);
-		printxy(ss.str().c_str(), 485, -565, 0);
+		printxy(ss.str().c_str(), 485, -565, 0);*/
 
 		//Contador enemigo 
-		cD->draw();
+		/*cD->draw();
 		ss.str("");
 		ss << nEnemigos[0] << endl;
 		setFont("resources/fonts/Bitwise.ttf", 12);
-		printxy(ss.str().c_str(), 485, -660, 0);
+		printxy(ss.str().c_str(), 485, -660, 0);*/
 	}
 	else if (miEstadoJuego == PARADO) {
-		menu = new Sprite("resources/textures/Pause.png");
+		menu = new Sprite("resources/textures/menupausa5.png");
 		menu->setCenter(300, 400);
 		menu->setSize(600, 800);
 		menu->draw();
+		ss.str("");
+		ss << "Enter para CONTINUAR" << endl;
+		setFont("resources/fonts/Bitwise.ttf", 15);
+		printxy(ss.str().c_str(), -180, 0, 0);
+		ss.str("");
+		ss << "Pulsa K para SALIR" << endl;
+		setFont("resources/fonts/Bitwise.ttf", 15);
+		printxy(ss.str().c_str(), -150, -150, 0);
 	}
 
 	else if (miEstadoJuego == FIN) {			//GAME OVER
@@ -115,26 +133,28 @@ void HUD::dibuja(Personaje p, Timer tJugando, int* nEnemigos)
 		menu->setSize(1920, 1920);
 		menu->draw();
 
+
+
 		//Contador enemigo tocho
-		cF->draw();
+		/*cF->draw();
 		ss.str("");
 		ss << nEnemigos[2] << endl;
 		setFont("resources/fonts/Bitwise.ttf", 12);
-		printxy(ss.str().c_str(), 485, -465, 0);
+		printxy(ss.str().c_str(), 485, -465, 0);*/
 
 		//Contador enemigo equilibrado
-		cM->draw();
+		/*cM->draw();
 		ss.str("");
 		ss << nEnemigos[1] << endl;
 		setFont("resources/fonts/Bitwise.ttf", 12);
-		printxy(ss.str().c_str(), 485, -565, 0);
+		printxy(ss.str().c_str(), 485, -565, 0);*/
 
 		//Contador enemigo 
-		cD->draw();
+		/*cD->draw();
 		ss.str("");
 		ss << nEnemigos[0] << endl;
 		setFont("resources/fonts/Bitwise.ttf", 12);
-		printxy(ss.str().c_str(), 485, -660, 0);
+		printxy(ss.str().c_str(), 485, -660, 0);*/
 
 		//Tiempo
 		ss.str("");
@@ -153,7 +173,7 @@ void HUD::dibuja(Personaje p, Timer tJugando, int* nEnemigos)
 	}
 
 	if (miEstadoJuego == JUGANDO) {
-		setTextColor(255, 0, 0);
+		setTextColor(255, 255, 255);
 		setFont("resources/fonts/Bitwise.ttf", 12);
 		printxy(ssf.str().c_str(), 460, 750, 0);
 	}
