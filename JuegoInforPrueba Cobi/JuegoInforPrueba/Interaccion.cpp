@@ -7,12 +7,12 @@ Interaccion::Interaccion(void)
 {
 }
 
-/*void Interaccion::colision(Personaje &h, Escenario c)
+void Interaccion::colisionEscenario(Personaje &h)
 {
-	float xmax=c.suelo.esquina2.x-3.33f;
-	float xmin=c.suelo.esquina1.x+3.33f;
-	float ymax=c.techo.esquina2.y-1.0f;
-	float ymin=c.suelo.esquina1.y+1.0f;
+	float xmax=10.0f-3.33f;
+	float xmin=-10.0f+3.33f;
+	float ymax=15.0f-1.0f;
+	float ymin=0.0f+1.0f;
 
 	if (h.getPos().x > xmax) {
 		h.setPos(xmax, h.getPos().y, h.getPos().z);
@@ -40,7 +40,7 @@ Interaccion::Interaccion(void)
 		h.moviendoIzquierda = false;
 	}
 	
-}*/
+}
 
 bool Interaccion::colision(Personaje &p, Celda c)
 {

@@ -38,7 +38,7 @@ void Mundo::Mueve()
 	listaBloques.alctualizarBloques(personaje.getPos());
 	listaEscenario.actualizarEscenario(personaje.getPos());
 
-	//Interaccion::colision(personaje,escenario);
+	Interaccion::colisionEscenario(personaje);
 	if (const Celda * miCeldaColison = listaBloques.colision(personaje))
 		personaje.miColor = miCeldaColison->miColor;
 }

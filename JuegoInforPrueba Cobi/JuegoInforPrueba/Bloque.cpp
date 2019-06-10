@@ -47,8 +47,8 @@ void Bloque::generarBloqueAleatorio(Bloque b)
 Bloque::Bloque()
 {
 	this->setPos(Vector3D(0, 2.0f, -50.0f));
-	this->setVel(Vector3D(0, 0, 30.0f));
-	this->setAccel(Vector3D(0, 0, 0));
+	this->setVel(Vector3D(0, 0, 0.0f));
+	this->setAccel(Vector3D(0, 0, 1.0f));
 	listaCeldas[0] = new Obstaculo();
 	listaCeldas[0]->setPos(this->getPos() + Vector3D(-5.0, 0,0));
 	listaCeldas[1] = new Bonus();
@@ -60,8 +60,8 @@ Bloque::Bloque()
 Bloque::Bloque(Bloque b, Vector3D v)
 {
 	this->setPos(b.getPos() + v);
-	this->setVel(Vector3D(0, 0, 30.0f));
-	this->setAccel(Vector3D(0, 0, 0));
+	this->setVel(b.getVel());
+	this->setAccel(Vector3D(0, 0, 1.0f));
 	
 	generarBloqueAleatorio(b);
 

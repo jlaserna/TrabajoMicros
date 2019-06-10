@@ -24,7 +24,6 @@ public:
 	void eliminar(Escenario* es);
 	Escenario* operator [](int i);
 	int getNumero() { return numero; }
-	const Pared* colision(Personaje per);
 	~ListaEscenario();
 
 };

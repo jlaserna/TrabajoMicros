@@ -7,6 +7,7 @@
 class Interaccion
 {
 public:
+	static void colisionEscenario(Personaje &p);
 	static bool colision(Personaje &h, Celda c);
 	Interaccion(void);
 	~Interaccion(void);

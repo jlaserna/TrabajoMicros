@@ -1,4 +1,5 @@
 #include "ListaEscenario.h"
+#include "Interaccion.h"
 
 
 
@@ -96,6 +97,7 @@ void ListaEscenario::destruirUltimoEscenario()
 	if(numero > 1)
 		eliminar(0);
 }
+
 
 ListaEscenario::~ListaEscenario()
 {

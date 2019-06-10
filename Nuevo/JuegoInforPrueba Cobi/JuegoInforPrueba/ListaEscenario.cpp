@@ -1,4 +1,5 @@
 #include "ListaEscenario.h"
+#include "Interaccion.h"
 
 
 
@@ -97,15 +98,6 @@ void ListaEscenario::destruirUltimoEscenario()
 		eliminar(0);
 }
 
-const Pared* ListaEscenario::colision(Personaje per)
-{
-	for (int i = 0; i < numero; i++)
-		for (int j = 0; j < 3; j++)
-			//if (Interaccion::colision(per, escenario[i]->getCelda(j)))
-				//return &escenario[i]->getPared(j);
-
-	return nullptr;
-}
 
 ListaEscenario::~ListaEscenario()
 {

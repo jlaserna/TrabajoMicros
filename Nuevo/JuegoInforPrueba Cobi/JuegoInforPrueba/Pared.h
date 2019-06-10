@@ -20,5 +20,6 @@ public:
 	void dibuja();
 	void setColor(unsigned char r,unsigned char v, unsigned char a);
 	void setLim(Vector3D l1, Vector3D l2){limite1=l1; limite2=l2;}
+	Vector3D* getLim() { Vector3D* lims[2]; lims[0] = &limite1; lims[1] = &limite2; return lims[0]; }
 
 };

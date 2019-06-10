@@ -7,11 +7,8 @@
 class Interaccion
 {
 public:
-	//static void colision(Personaje &h, Escenario c);
+	static void colisionEscenario(Personaje &p);
 	static bool colision(Personaje &h, Celda c);
-	/*static bool rebote(Esfera &e, Pared p);
-	static void rebote(Esfera &e, Caja c);
-	static bool rebote(Esfera &e, Esfera &c);*/
 	Interaccion(void);
 	~Interaccion(void);
 };

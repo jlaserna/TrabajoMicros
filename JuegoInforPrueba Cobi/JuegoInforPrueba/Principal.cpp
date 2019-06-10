@@ -3,6 +3,7 @@
 
 Mundo mundo;
 
+
 //los callback, funciones que seran llamadas automaticamente por la glut
 //cuando sucedan eventos
 //NO HACE FALTA LLAMARLAS EXPLICITAMENTE
@@ -15,12 +16,17 @@ void onKeyboardUp(unsigned char key, int x, int y);
 unsigned char key;
 bool keystates[256];
 
+float w = 800;        //Dimensiones inciales de la ventana
+float h = 600;
+
+float disRender = 2000;       //Distancia de renderizado
+
 int main(int argc,char* argv[])
 {
 	//Inicializar el gestor de ventanas GLUT
 	//y crear la ventana
 	glutInit(&argc, argv);
-	glutInitWindowSize(800,600);
+	glutInitWindowSize(w,h);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 	glutCreateWindow("MiJuego");
 
@@ -30,7 +36,7 @@ int main(int argc,char* argv[])
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_COLOR_MATERIAL);	
 	glMatrixMode(GL_PROJECTION);
-	gluPerspective( 40.0, 800/600.0f, 0.1, 2000);
+	gluPerspective( 40.0, w/h, 0.1, disRender);
 
 	//Registrar los callbacks
 	glutDisplayFunc(OnDraw);
@@ -92,4 +98,15 @@ void OnTimer(int value)
 	//no borrar estas lineas
 	glutTimerFunc(25,OnTimer,0);
 	glutPostRedisplay();
+}
+
+void reshape(int w, int h)		//Funcion que cambia los parametros de perspectiva para 
+{								// que al redimensionar la ventana el mundo se dibuje correctamente
+	glViewport(0, 0, w, h);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	gluPerspective(60, (GLfloat)w / (GLfloat)h, 0.1, 1000.0);
+	glMatrixMode(GL_MODELVIEW);
+
+	//mundo.setSize(w, h);
 }

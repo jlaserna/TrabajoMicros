@@ -3,6 +3,7 @@
 #include "glut.h"
 #include <math.h>
 #include "Interaccion.h"
+#include "Timer.h"
 
 void Mundo::RotarOjo()
 {
@@ -15,26 +16,31 @@ void Mundo::RotarOjo()
 void Mundo::Dibuja()
 {
 	gluLookAt(x_ojo, y_ojo, z_ojo,  // posicion del ojo
-			0.0, y_ojo, 0.0,      // hacia que punto mira  (0,0,0) 
-			0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)    
+		0.0, y_ojo, 0.0,      // hacia que punto mira  (0,0,0) 
+		0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)    
 
-	
+	listaEscenario.dibuja();
 	personaje.dibuja();
 	listaBloques.dibuja();
-	listaEscenario.dibuja();
+
+	int a[3] = { 0,0,5 };
+
+	miHUD.dibuja(personaje, tiempoJuego, a);
 }
 
 void Mundo::Mueve()
 {
-	listaEscenario.mueve(0.025f);
+	if (!jugando)
+		return;
 	personaje.mueve(0.075f);
 	listaBloques.mueve(0.025f);
+	listaEscenario.mueve(0.025f);
 	listaBloques.alctualizarBloques(personaje.getPos());
 	listaEscenario.actualizarEscenario(personaje.getPos());
 
-	/*Interaccion::colision(personaje,escenario);
+	Interaccion::colisionEscenario(personaje);
 	if (const Celda * miCeldaColison = listaBloques.colision(personaje))
-		personaje.miColor = miCeldaColison->miColor;*/
+		personaje.miColor = miCeldaColison->miColor;
 }
 
 void Mundo::Inicializa()
@@ -43,10 +49,31 @@ void Mundo::Inicializa()
 	y_ojo=7.5;
 	z_ojo=30;
 
+	jugando = false;
+
 }
 
 void Mundo::tecla(bool keystates[])
 {
+	switch (jugando) {
+
+	case true:
+		if (keystates[27]) {
+			miHUD.parar();
+			jugando = false;
+			tiempoJuego.stop();
+		}
+		break;
+
+	case false:
+		if (keystates[13]) {
+			miHUD.volverAJugar();
+			jugando = true;
+			tiempoJuego.start();
+		}
+		break;
+	}
+
 	if (keystates['a'])
 	{
 		personaje.izquierda();
@@ -59,11 +86,28 @@ void Mundo::tecla(bool keystates[])
 	{
 		personaje.salta();
 	}
+	else if (keystates['+'])
+	{
+		if (!jugando) {
+			tiempoJuego.start();
+			miHUD.iniciar();
+			jugando = true;
+		}
+	}
+	else if (keystates['-'])
+	{
+		miHUD.gameOver();
+		jugando = false;
+		tiempoJuego.stop();
+	}
 
+
+	
 }
 
 void Mundo::teclaEspecial(unsigned char key)
 {
+
 	switch(key)
 	{
 	case (GLUT_KEY_LEFT):
@@ -82,4 +126,5 @@ void Mundo::teclaEspecial(unsigned char key)
 		break;
 
 	}
+
 }
