@@ -1,2 +1,39 @@
-﻿  Obstaculo.cpp
-  JuegoInforPrueba.vcxproj -> D:\Usuarios\Javier\Documentos\GitHub\TrabajoMicros\JuegoInforPrueba Cobi\Debug\JuegoInforPrueba.exe
+﻿Compilación iniciada a las 11/06/2019 12:21:51.
+     1>Proyecto "C:\Users\ALEX PC\Documents\GitHub\TrabajoMicros\JuegoInforPrueba Cobi\JuegoInforPrueba\JuegoInforPrueba.vcxproj" en el nodo 2 (Build destinos).
+       El archivo del proyecto contiene ToolsVersion="15.0". Este conjunto de herramientas falta o es desconocido, en cuyo caso es posible que pueda resolver este problema instalando la versión apropiada de MSBuild. También es posible que, por motivos de directiva, se haya exigido a la compilación que use un valor determinado para ToolsVersion. Se tratará el proyecto como si contuviera ToolsVersion="4.0". Para obtener más información, vea http://go.microsoft.com/fwlink/?LinkId=291333.
+     1>Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\ALEX PC\Documents\GitHub\TrabajoMicros\JuegoInforPrueba Cobi\Debug\JuegoInforPrueba.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\ALEX PC\Documents\GitHub\TrabajoMicros\JuegoInforPrueba Cobi\Debug\JuegoInforPrueba.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\ALEX PC\Documents\GitHub\TrabajoMicros\JuegoInforPrueba Cobi\Debug\JuegoInforPrueba.lib" /MACHINE:X86 Debug\Bloque.obj
+         Debug\Bonus.obj
+         Debug\BonusFantasma.obj
+         Debug\BonusMoneda.obj
+         Debug\BonusVelocidad.obj
+         Debug\Celda.obj
+         Debug\Escenario.obj
+         Debug\HUD.obj
+         Debug\Interaccion.obj
+         Debug\ListaBloques.obj
+         Debug\ListaEscenario.obj
+         Debug\MundoJuego.obj
+         Debug\Objeto.obj
+         Debug\Obstaculo.obj
+         Debug\Pared.obj
+         Debug\Personaje.obj
+         Debug\Principal.obj
+         Debug\Timer.obj
+         Debug\Vacio.obj
+         Debug\Vector3D.obj
+     1>Escenario.obj : error LNK2038: se detectaron diferencias para '_MSC_VER': el valor '1900' no coincide con el valor '1700' en Bloque.obj
+     1>Pared.obj : error LNK2038: se detectaron diferencias para '_MSC_VER': el valor '1900' no coincide con el valor '1700' en Bloque.obj
+     1>Personaje.obj : error LNK2038: se detectaron diferencias para '_MSC_VER': el valor '1900' no coincide con el valor '1700' en Bloque.obj
+     1>msvcprtd.lib(MSVCP110D.dll) : error LNK2005: ya se definió "public: __thiscall std::_Container_base12::_Container_base12(void)" (??0_Container_base12@std@@QAE@XZ) en Escenario.obj
+     1>msvcprtd.lib(MSVCP110D.dll) : error LNK2005: ya se definió "public: void __thiscall std::_Container_base12::_Orphan_all(void)" (?_Orphan_all@_Container_base12@std@@QAEXXZ) en Escenario.obj
+     1>Escenario.obj : error LNK2019: símbolo externo "void __cdecl operator delete(void *,unsigned int)" (??3@YAXPAXI@Z) sin resolver al que se hace referencia en la función "void __cdecl std::_Deallocate<8,0>(void *,unsigned int)" (??$_Deallocate@$07$0A@@std@@YAXPAXI@Z)
+     1>Objeto.obj : error LNK2001: símbolo externo "void __cdecl operator delete(void *,unsigned int)" (??3@YAXPAXI@Z) sin resolver
+     1>Pared.obj : error LNK2001: símbolo externo "void __cdecl operator delete(void *,unsigned int)" (??3@YAXPAXI@Z) sin resolver
+     1>Personaje.obj : error LNK2001: símbolo externo "void __cdecl operator delete(void *,unsigned int)" (??3@YAXPAXI@Z) sin resolver
+     1>C:\Users\ALEX PC\Documents\GitHub\TrabajoMicros\JuegoInforPrueba Cobi\Debug\JuegoInforPrueba.exe : fatal error LNK1120: 1 externos sin resolver
+     1>Compilación del proyecto terminada "C:\Users\ALEX PC\Documents\GitHub\TrabajoMicros\JuegoInforPrueba Cobi\JuegoInforPrueba\JuegoInforPrueba.vcxproj" (Build destinos) -- ERROR.
+
+ERROR al compilar.
+
+Tiempo transcurrido 00:00:00.76

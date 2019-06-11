@@ -7,8 +7,8 @@ class Celda :
 	public Objeto
 {
 public:
-	tipoCelda miTipoCelda = NONE;
-	bool activo = true;
+	tipoCelda miTipoCelda;
+	bool activo;
 public:
 	Celda();
 	void dibuja();

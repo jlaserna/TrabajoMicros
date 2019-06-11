@@ -14,10 +14,10 @@ HUD::HUD()
 	/*cF = new Sprite("resources/textures/HUDzombie3.png", 565, -450, 60, 100);
 	cM = new Sprite("resources/textures/HUDzombie2.png", 565, -550, 50, 100);
 	cD = new Sprite("resources/textures/HUDzombie1.png", 565, -650, 40, 100);*/
-	menu = new Sprite("resources/textures/MenuInicio.png");
+	menu = new Sprite("resources/textures/menu.png");
 	contMon = new Sprite("resources/textures/MonUnica.png", 565, -500, 80, 100);
-	bonusV = new SpriteSequence("resources/textures/BonVelocidadVacio.png", 2, 1, 10, true, -535, -650, 110, 140);
-	bonusF = new SpriteSequence("resources/textures/BonFantasmaVacio.png", 2, 1, 10, true, -415, -650, 110, 140);
+	bonusV = new SpriteSequence("resources/textures/BonVelocidadHUD.png", 2, 1, 10, true, -535, -650, 110, 140);
+	bonusF = new SpriteSequence("resources/textures/BonFantasmaHUD.png", 2, 1, 10, true, -415, -650, 110, 140);
 }
 
 void HUD::dibuja(Personaje p, Timer tJugando, int nMonedas, bool bonusActivo[])
@@ -32,9 +32,18 @@ void HUD::dibuja(Personaje p, Timer tJugando, int nMonedas, bool bonusActivo[])
 	glDisable(GL_LIGHTING);
 
 	if (miEstadoJuego == INICIO) {
-		menu->setCenter(620, 860);
-		menu->setSize(1280, 1920);
+		menu->setCenter(800, 860);
+		menu->setSize(1480, 1670);
 		menu->draw();
+		ss.str("");
+		ss << "Pulsa + para COMENZAR" << endl;
+		setFont("resources/fonts/Bitwise.ttf", 17);
+		setTextColor(0.0f, 0.0f, 200.0f);
+		printxy(ss.str().c_str(), 100, 100, 0);
+		ss.str("");
+		ss << "Pulsa P para SALIR" << endl;
+		setFont("resources/fonts/Bitwise.ttf", 17);
+		printxy(ss.str().c_str(), 150, -130, 0);
 	}
 
 	else if (miEstadoJuego == JUGANDO) {
@@ -128,7 +137,7 @@ void HUD::dibuja(Personaje p, Timer tJugando, int nMonedas, bool bonusActivo[])
 			colorActual++;
 		}
 
-		menu = new Sprite("resources/textures/gameOver.png");
+		menu = new Sprite("resources/textures/menufinal.png");
 		menu->setCenter(960, 960);
 		menu->setSize(1920, 1920);
 		menu->draw();

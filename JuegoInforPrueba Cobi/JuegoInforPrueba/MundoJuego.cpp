@@ -80,6 +80,7 @@ void Mundo::Inicializa()
 	y_ojo=7.5;
 	z_ojo=20;
 
+	jugadorInvencible = false;
 	jugando = false;
 	contadorMonedas = 0;
 	tiempoBonusFantasma.setInterval(10000);
