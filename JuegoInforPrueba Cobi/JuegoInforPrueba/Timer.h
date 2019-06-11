@@ -8,7 +8,6 @@ private:
 	int interval;
 	int time_;
 	int elapsedTime;
-	int startTime;
 	bool parado;
 
 public:
@@ -18,7 +17,9 @@ public:
 	int getTimeM();
 	bool isTriger();
 	void stop() { parado = true; }
-	void start() { parado = false; timebase = glutGet(GLUT_ELAPSED_TIME); }
+	void start() { parado = false; reset(); }
+	void congelar() { parado = true;  timebase = glutGet(GLUT_ELAPSED_TIME) - timebase; }
+	void desCongelar() { parado = false;  timebase = glutGet(GLUT_ELAPSED_TIME) - timebase; }
 	void setInterval(int inter) { this->interval = inter; }
 	int getElapsedTime() { return elapsedTime; }
 };

@@ -10,14 +10,10 @@ using ETSIDI::SpriteSequence;
 class Obstaculo : public Celda
 {
 private:
-	//Pared lPared[5];
-	//Textura tSuperior;
-	//SpriteSequence sprite;
+	SpriteSequence sprite;
 public:
-	//Pared lPared[5];
 	Obstaculo();
 	void dibuja();
-	//void setTextura(string lTexturas[5]);
 	virtual ~Obstaculo();
 
 };

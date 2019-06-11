@@ -103,7 +103,6 @@ void ListaBloques::alctualizarBloques(Vector3D pos)
 	}
 	if(lista[numero-1]->getVel().z >= velMax)
 		for (int i = 0; i < numero; i++) {
-			lista[i]->setAccel(Vector3D(0, 0, 0));
 			lista[i]->setVel(Vector3D(0, 0, velMax));
 		}
 }

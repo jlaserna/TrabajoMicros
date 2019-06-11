@@ -42,7 +42,8 @@ void Mundo::Mueve()
 		case OBSTACULO:
 			if (!jugadorInvencible) {
 				miHUD.gameOver();
-				tiempoJuego.stop();
+				tiempoJuego.congelar();
+				jugando = false;
 			}
 			break;
 		case BONUSFANTASMA:
@@ -85,6 +86,7 @@ void Mundo::Inicializa()
 	tiempoBonusVelocidad.setInterval(10000);
 	tiempoBonusFantasma.stop();
 	tiempoBonusVelocidad.stop();
+	tiempoJuego.reset();
 }
 
 void Mundo::tecla(bool keystates[])
@@ -95,7 +97,7 @@ void Mundo::tecla(bool keystates[])
 		if (keystates[27]) {
 			miHUD.parar();
 			jugando = false;
-			tiempoJuego.stop();
+			tiempoJuego.congelar();
 		}
 		break;
 
@@ -103,7 +105,7 @@ void Mundo::tecla(bool keystates[])
 		if (keystates[13]) {
 			miHUD.volverAJugar();
 			jugando = true;
-			tiempoJuego.start();
+			tiempoJuego.desCongelar();
 		}
 		break;
 	}

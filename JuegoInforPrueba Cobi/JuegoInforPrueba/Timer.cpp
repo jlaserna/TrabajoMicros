@@ -5,9 +5,8 @@
 
 Timer::Timer() {
 	interval = 0;
-	timebase = 0;
+	timebase = glutGet(GLUT_ELAPSED_TIME);;
 	elapsedTime = 0;
-	startTime = 0;
 	parado = false;
 }
 
@@ -38,7 +37,7 @@ int Timer::getTimeS() {
 
 int Timer::getTimeM() {
 	if (parado)
-		return (timebase / 1000) / 60;
+		return ((int)timebase / 1000) / 60;
 	return floor(((glutGet(GLUT_ELAPSED_TIME) - timebase) / 1000) / 60);
 }
 
