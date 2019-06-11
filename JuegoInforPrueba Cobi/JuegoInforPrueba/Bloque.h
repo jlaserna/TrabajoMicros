@@ -16,7 +16,9 @@ public:
 	Bloque();
 	Bloque(Bloque b, Vector3D v);
 	bool sonCompatibles(Bloque b, tipoCelda* mTipoCelda);
-	Celda getCelda(int i);
+	Celda* getCelda(int i);
+	void desactivar(int index) { listaCeldas[index]->desactivar(); }
+	bool estaActivo(int index) { return listaCeldas[index]->estaActivo(); }
 	void dibuja();
 	void mueve(float t);
 	~Bloque();

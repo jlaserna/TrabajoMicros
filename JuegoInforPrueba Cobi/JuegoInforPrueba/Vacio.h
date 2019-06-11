@@ -5,7 +5,7 @@ class Vacio :
 {
 public:
 	Vacio();
-	void dibuja() {};
+	Vacio(Vector3D pos, Vector3D vel, Vector3D acel) { setPos(pos); setVel(vel); setAccel(acel); }
 	virtual ~Vacio();
 
 	friend class Interaccion;

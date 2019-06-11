@@ -12,11 +12,14 @@ Bonus::Bonus()
 
 void Bonus::dibuja()
 {
-	glPushMatrix();
-	glTranslatef(this->getPos().x, this->getPos().y, this->getPos().z);
-	glColor3ub(miColor.r, miColor.g, miColor.b);
-	sprite->draw();
-	glPopMatrix();
+	if (activo) {
+		glPushMatrix();
+		glTranslatef(this->getPos().x, this->getPos().y, this->getPos().z);
+		glColor3ub(miColor.r, miColor.g, miColor.b);
+		sprite->draw();
+		glPopMatrix();
+	}
+
 }
 
 

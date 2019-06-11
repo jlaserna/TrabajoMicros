@@ -18,7 +18,7 @@ public:
 	bool generarNuevoBloque();
 	void destruirUltimoBloque();
 	void destruirContenido();
-	Celda* colision(Personaje per);
+	tipoCelda colision(Personaje per);
 	void alctualizarBloques(Vector3D pos);
 	bool existeElemento(Bloque* d);
 	void dibuja();
@@ -28,6 +28,7 @@ public:
 	Bloque* operator [](int i);
 	int getNumero() { return numero; }
 	void setVelMax(float velMax) { this->velMax = velMax; }
+	float getVelMax() { return velMax; }
 	~ListaBloques();
 
 };

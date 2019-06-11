@@ -16,11 +16,11 @@ HUD::HUD()
 	cD = new Sprite("resources/textures/HUDzombie1.png", 565, -650, 40, 100);*/
 	menu = new Sprite("resources/textures/MenuInicio.png");
 	contMon = new Sprite("resources/textures/MonUnica.png", 565, -500, 80, 100);
-	bonusV = new SpriteSequence("resources/textures/BonVelocidadVacio.png", 1, 1, 10, true, -535, -650, 110, 140);
-	bonusF = new SpriteSequence("resources/textures/BonFantasmaVacio.png", 1, 1, 10, true, -415, -650, 110, 140);
+	bonusV = new SpriteSequence("resources/textures/BonVelocidadVacio.png", 2, 1, 10, true, -535, -650, 110, 140);
+	bonusF = new SpriteSequence("resources/textures/BonFantasmaVacio.png", 2, 1, 10, true, -415, -650, 110, 140);
 }
 
-void HUD::dibuja(Personaje p, Timer tJugando, int nMonedas)
+void HUD::dibuja(Personaje p, Timer tJugando, int nMonedas, bool bonusActivo[])
 {
 	glMatrixMode(GL_PROJECTION);
 	glPushMatrix();
@@ -47,17 +47,17 @@ void HUD::dibuja(Personaje p, Timer tJugando, int nMonedas)
 		printxy(ss.str().c_str(), -60, 700, 0);
 
 		
-		//Bonus velocidad
-		//if (j.getBonusActivo(0))
-			//bonusV->setState(0);
-		//else
+		//Bonus Velocidad
+		if (bonusActivo[0])
+			bonusV->setState(0);
+		else
 			bonusV->setState(1);
 		bonusV->draw();
 
-		//Bonus disparo
-		//if (j.getBonusActivo(1))
-			//bonusE->setState(0);
-		//else
+		//Bonus Fantasma
+		if (bonusActivo[1])
+			bonusF->setState(0);
+		else
 			bonusF->setState(1);
 		bonusF->draw();
 

@@ -15,6 +15,8 @@ private:
 	ListaEscenario listaEscenario;
 	HUD miHUD;
 	Timer tiempoJuego;
+	Timer tiempoBonusVelocidad;
+	Timer tiempoBonusFantasma;
 	bool bonusActivos[2];
 	bool jugadorInvencible = false;
 	int contadorMonedas;
@@ -27,8 +29,6 @@ public:
 	void RotarOjo();
 	void Mueve();
 	void Dibuja();
-	void teclaEspecial(unsigned char key);
-	void setBonusActivo(int index);
 
 	float x_ojo;
 	float y_ojo;

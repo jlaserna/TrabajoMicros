@@ -15,4 +15,5 @@ void Celda::dibuja()
 
 Celda::~Celda()
 {
+	Objeto::~Objeto();
 }

@@ -8,11 +8,14 @@ class Celda :
 {
 public:
 	tipoCelda miTipoCelda = NONE;
+	bool activo = true;
 public:
 	Celda();
 	void dibuja();
 	virtual ~Celda();
 	tipoCelda getTipoCelda() { return miTipoCelda; };
+	void desactivar() { activo = false; }
+	bool estaActivo() { return activo; }
 	friend class Interaccion;
 };
 

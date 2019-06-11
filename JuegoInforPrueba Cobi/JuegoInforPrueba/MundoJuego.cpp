@@ -4,6 +4,7 @@
 #include <math.h>
 #include "Interaccion.h"
 #include "Timer.h"
+#include "Vacio.h"
 
 void Mundo::RotarOjo()
 {
@@ -23,7 +24,7 @@ void Mundo::Dibuja()
 	personaje.dibuja();
 	listaBloques.dibuja();
 
-	miHUD.dibuja(personaje, tiempoJuego, contadorMonedas);
+	miHUD.dibuja(personaje, tiempoJuego, contadorMonedas, bonusActivos);
 }
 
 void Mundo::Mueve()
@@ -37,34 +38,53 @@ void Mundo::Mueve()
 	listaEscenario.actualizarEscenario(personaje.getPos());
 
 	Interaccion::colisionEscenario(personaje);
-	Celda* miCeldaColison = listaBloques.colision(personaje);
-	if( miCeldaColison != NULL)
-		switch (miCeldaColison->getTipoCelda())
-		{
-		case BONUSVELOCIDAD:
-			listaBloques.setVelMax(10.0f);
-			listaEscenario.setVelMax(10.0f);
+	switch (listaBloques.colision(personaje)) {
+		case OBSTACULO:
+			if (!jugadorInvencible) {
+				miHUD.gameOver();
+				tiempoJuego.stop();
+			}
+			break;
+		case BONUSFANTASMA:
+			bonusActivos[1] = true;
+			jugadorInvencible = true;
+			tiempoBonusFantasma.start();
 			break;
 		case BONUSMONEDA:
 			contadorMonedas++;
 			break;
-		case BONUSFANTASMA:
+		case BONUSVELOCIDAD:
+			bonusActivos[0] = true;
+			listaBloques.setVelMax(10.0f);
+			listaEscenario.setVelMax(10.0f);
+			tiempoBonusVelocidad.start();
 			break;
-		case OBSTACULO:
-			miHUD.gameOver();//!personajeInvencible
-			break;
-		}
+	}
+	if (tiempoBonusFantasma.isTriger()) {
+		bonusActivos[1] = false;
+		jugadorInvencible = false;
+		tiempoBonusFantasma.stop();
+	}
+	if (tiempoBonusVelocidad.isTriger()) {
+		bonusActivos[0] = false;
+		listaBloques.setVelMax(50.0f);
+		listaEscenario.setVelMax(50.0f);
+		tiempoBonusVelocidad.stop();
+	}
 }
 
 void Mundo::Inicializa()
 {
 	x_ojo=0;
 	y_ojo=7.5;
-	z_ojo=30;
+	z_ojo=20;
 
 	jugando = false;
 	contadorMonedas = 0;
-
+	tiempoBonusFantasma.setInterval(10000);
+	tiempoBonusVelocidad.setInterval(10000);
+	tiempoBonusFantasma.stop();
+	tiempoBonusVelocidad.stop();
 }
 
 void Mundo::tecla(bool keystates[])
@@ -107,53 +127,5 @@ void Mundo::tecla(bool keystates[])
 			miHUD.iniciar();
 			jugando = true;
 		}
-	}
-	else if (keystates['-'])
-	{
-		miHUD.gameOver();
-		jugando = false;
-		tiempoJuego.stop();
-	}
-
-
-	
-}
-
-void Mundo::teclaEspecial(unsigned char key)
-{
-
-	switch(key)
-	{
-	case (GLUT_KEY_LEFT):
-	
-		personaje.izquierda();
-		break;
-	
-	case (GLUT_KEY_RIGHT):
-		
-		personaje.derecha();
-		break;
-
-	case GLUT_KEY_UP:
-		
-		personaje.izquierda();
-		break;
-
-	}
-
-}
-
-void Mundo::setBonusActivo(int index) {
-	bonusActivos[index] = true;
-
-	if (bonusActivos[0]) {
-		listaBloques.setVelMax(10.0f);
-		//bonusTimer.reset();
-	}
-
-	if (bonusActivos[1]) {
-		jugadorInvencible = true;
-		//bonusTimer.reset();
-	}
-
+	}	
 }

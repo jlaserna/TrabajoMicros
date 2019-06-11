@@ -28,10 +28,11 @@ private:
 	Sprite* cD;
 	Sprite* menu;
 	estadoJuego miEstadoJuego;
+	bool bonusActivo[2];
 
 public:
 	HUD();
-	void dibuja(Personaje p, Timer tJugando, int nMonedas);
+	void dibuja(Personaje p, Timer tJugando, int nMonedas, bool bonusActivo[]);
 	void parar() { if (miEstadoJuego == JUGANDO) miEstadoJuego = PARADO; }
 	void iniciar() { if (miEstadoJuego == INICIO) miEstadoJuego = JUGANDO; }
 	void volverAJugar() { if (miEstadoJuego == PARADO) miEstadoJuego = JUGANDO; }

@@ -17,8 +17,8 @@ public:
 	int getTimeS();
 	int getTimeM();
 	bool isTriger();
-	void stop() { parado = true; timebase = (glutGet(GLUT_ELAPSED_TIME) - timebase); }
-	void start() { parado = false; timebase = (glutGet(GLUT_ELAPSED_TIME) - timebase); }
+	void stop() { parado = true; }
+	void start() { parado = false; timebase = glutGet(GLUT_ELAPSED_TIME); }
 	void setInterval(int inter) { this->interval = inter; }
 	int getElapsedTime() { return elapsedTime; }
 };

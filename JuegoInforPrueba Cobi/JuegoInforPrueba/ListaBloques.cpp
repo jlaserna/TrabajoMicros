@@ -56,15 +56,43 @@ void ListaBloques::destruirContenido() {
 
 }
 
-Celda* ListaBloques::colision(Personaje per)
+tipoCelda ListaBloques::colision(Personaje per)
 {
 	for (int i = 0; i < numero; i++) {//cambiar numero por 2
 		for (int j = 0; j < 3; j++) {
-			if (Interaccion::colision(per, lista[i]->getCelda(j)))
-				return &lista[i]->getCelda(j);
+			if (Interaccion::colision(per, *lista[i]->getCelda(j))) {
+				switch (lista[i]->getCelda(j)->getTipoCelda()) {
+				case OBSTACULO: 
+					return OBSTACULO;
+					break;
+				case BONUSFANTASMA:
+					if (lista[i]->estaActivo(j)) {
+						lista[i]->desactivar(j);
+						return BONUSFANTASMA;
+					}
+					else
+						return NONE;
+					break;
+				case BONUSMONEDA:
+					if (lista[i]->estaActivo(j)) {
+						lista[i]->desactivar(j);
+						return BONUSMONEDA;
+					}
+					else
+						return NONE;
+					break;
+				case BONUSVELOCIDAD:
+					if (lista[i]->estaActivo(j)) {
+						lista[i]->desactivar(j);
+						return BONUSVELOCIDAD;
+					}
+					else
+						return NONE;
+					break;
+				}
+			}
 		}
 	}
-	return NULL;
 }
 
 void ListaBloques::alctualizarBloques(Vector3D pos)

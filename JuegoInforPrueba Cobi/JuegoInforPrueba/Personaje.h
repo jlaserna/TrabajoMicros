@@ -1,5 +1,7 @@
 #include "Objeto.h"
 #include "ETSIDI.h"
+#include "Timer.h"
+
 using ETSIDI::SpriteSequence;
 
 #define GLOBAL_ACCEL -9.81f
@@ -14,6 +16,9 @@ private:
 	bool moviendoDerecha;
 	bool moviendoIzquierda;
 	SpriteSequence sprite;
+	bool bonusActivos[2];
+	Timer bonusTimer;
+
 
 public:
 	Personaje();

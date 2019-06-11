@@ -91,19 +91,19 @@ bool Bloque::sonCompatibles(Bloque b, tipoCelda* mTipoCelda)
 		case OBSTACULO:
 			break;
 		case BONUSVELOCIDAD:
-			if (b.getCelda(i).getTipoCelda() == (BONUSVELOCIDAD || BONUSFANTASMA || BONUSMONEDA||  VACIO));
+			if (b.getCelda(i)->getTipoCelda() == (BONUSVELOCIDAD || BONUSFANTASMA || BONUSMONEDA||  VACIO));
 				return true;
 			break;
 		case BONUSFANTASMA:
-			if (b.getCelda(i).getTipoCelda() == (BONUSVELOCIDAD || BONUSFANTASMA || BONUSMONEDA || VACIO));
+			if (b.getCelda(i)->getTipoCelda() == (BONUSVELOCIDAD || BONUSFANTASMA || BONUSMONEDA || VACIO));
 				return true;
 			break;
 		case BONUSMONEDA:
-			if (b.getCelda(i).getTipoCelda() == (BONUSVELOCIDAD || BONUSFANTASMA || BONUSMONEDA || VACIO));
+			if (b.getCelda(i)->getTipoCelda() == (BONUSVELOCIDAD || BONUSFANTASMA || BONUSMONEDA || VACIO));
 				return true;
 			break;
 		case VACIO:
-			if (b.getCelda(i).getTipoCelda() == (BONUSVELOCIDAD || BONUSFANTASMA || BONUSMONEDA || VACIO));
+			if (b.getCelda(i)->getTipoCelda() == (BONUSVELOCIDAD || BONUSFANTASMA || BONUSMONEDA || VACIO));
 				return true;
 			break;
 		}
@@ -111,9 +111,9 @@ bool Bloque::sonCompatibles(Bloque b, tipoCelda* mTipoCelda)
 	return false;
 }
 
-Celda Bloque::getCelda(int i)
+Celda* Bloque::getCelda(int i)
 {
-	return *listaCeldas[i];
+	return listaCeldas[i];
 }
 
 void Bloque::dibuja()
